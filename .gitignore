@@ -14,3 +14,8 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+/litera-tour-the-game/.vs/LITERATOURTHEGAME/CopilotIndices
+/litera-tour-the-game/.vs/LITERATOURTHEGAME/DesignTimeBuild
+*.vsidx
+/litera-tour-the-game/.vs/LITERATOURTHEGAME/v17
+/litera-tour-the-game/.vs
