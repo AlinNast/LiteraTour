@@ -1,10 +1,21 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class Enemy : CharacterBody3D
 {
+	public enum EnemyState
+	{
+		IDLE,
+		CHASING,
+		WAITING,
+		DEAD
+	}
+
+	[ExportGroup("Enemy Setting")]
 	[Export] public float MoveSpeed = 3f;
 	[Export] public int MaxHealth = 3;
+	[Export] public float ChaseRange = 10f;
 	[Export] public float RetargetTime = 2f;
 	[Export] public float LookRotateSpeed = 5f;
 	[Export] public PackedScene BrokenModel;
@@ -13,6 +24,8 @@ public partial class Enemy : CharacterBody3D
 	private bool isDead = false;
 	private Player targetPlayer;
 	private float retargetTimer = 0f;
+
+	private EnemyState currentState = EnemyState.IDLE;
 
     public override void _Ready()
     {
@@ -50,6 +63,83 @@ public partial class Enemy : CharacterBody3D
 		//GD.Print("Distance: ", GlobalPosition.DistanceTo(targetPlayer.GlobalPosition));
 		DebugDraw3D.DrawLine(GlobalPosition, targetPlayer.GlobalPosition, Colors.Red);
     }
+
+	/// <summary>
+	/// Enemy range
+	/// </summary>
+	/// <returns> distance to targetplayer true/false </returns>
+	private bool IsTargetPlayerInRange()
+	{
+		if (targetPlayer == null)
+			return false;
+		
+		return GlobalTransform.Origin.DistanceTo(targetPlayer.GlobalTransform.Origin) <= ChaseRange;
+	}
+
+	public void HandleEnemyState(double delta)
+	{
+		switch (currentState)
+		{
+			case EnemyState.IDLE:
+				UpdateIdle(delta);
+				break;
+			case EnemyState.CHASING:
+				UpdateChasing(delta);
+				break;
+			case EnemyState.WAITING:
+				UpdateChasing(delta);
+				break;
+			case EnemyState.DEAD:
+				UpdateDead(delta);
+				break;
+		}
+	}
+
+	private void UpdateIdle(double delta)
+	{
+		Velocity = Vector3.Down;
+		MoveAndSlide();
+
+		if (IsTargetPlayerInRange())
+			currentState = EnemyState.CHASING;
+	}
+
+	private void UpdateChasing(double delta)
+	{
+		if (Velocity.Length() < 0.1f)
+		{
+			Velocity = Vector3.Down;
+		}
+
+		if (!IsTargetPlayerInRange())
+		{
+			currentState = EnemyState.IDLE;
+			return;
+		}
+
+		/*if (IsPlayerInside)
+		{
+			OnHitPlayer();
+			return;
+		} */
+
+		Vector3 direction = targetPlayer.GlobalTransform.Origin - GlobalTransform.Origin;
+		direction.Y = 0;
+
+		if (direction.Length() < 0.1f)
+			return;
+		Vector3 move = direction.Normalized() * MoveSpeed;
+		Velocity = new Vector3(move.X, 0, move.Z);
+
+		MoveAndSlide();
+		//Chasing Animation
+	}
+
+	private void UpdateDead(double delta)
+	{
+		Velocity = Vector3.Zero;
+		MoveAndSlide();
+	}
 
 	private void HandleChoosingTarget()
 	{

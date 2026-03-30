@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dx35wjiatjt67"]
 
-[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://LiteraTour_Prototype/prefabs/player.tscn" id="1_iovii"]
-[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://LiteraTour_Prototype/prefabs/prototype_crate.tscn" id="2_dgmo7"]
-[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://LiteraTour_Prototype/prefabs/enemy.tscn" id="3_8kgs6"]
+[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://prefabs/player.tscn" id="1_iovii"]
+[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://prefabs/prototype_crate.tscn" id="2_dgmo7"]
+[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://prefabs/enemy.tscn" id="3_8kgs6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_le1cq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
