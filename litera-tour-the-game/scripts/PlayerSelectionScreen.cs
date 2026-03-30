@@ -98,5 +98,6 @@ public partial class PlayerSelectionScreen : Control
 		GD.Print("Selected number of players: " + numPlayers);
 		// Then change to the next scene, such as the level selection screen
 		//GetTree().ChangeSceneToFile("Scenes/LevelSelectionScreen.tscn");
+		GameInstance.Instance.StartGame(numPlayers);
 	}
 }
