@@ -1,17 +1,35 @@
 [gd_scene format=3 uid="uid://6vwh6i4tbrkc"]
 
+[ext_resource type="Script" uid="uid://iw01rnj4ijvy" path="res://scripts/PlayerSelectionScreen.cs" id="1_hvp63"]
 [ext_resource type="Texture2D" uid="uid://dhn1aawiw032q" path="res://Textures/icon.svg" id="1_t8fup"]
+[ext_resource type="Texture2D" uid="uid://cfkhxotrbu1c1" path="res://Textures/xbox_button_color_a.png" id="3_rx65j"]
+[ext_resource type="Texture2D" uid="uid://72uafy37rqq3" path="res://Textures/xbox_button_color_b.png" id="4_rx65j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkc7l"]
 texture = ExtResource("1_t8fup")
 
-[node name="PlayerSelectionScreen" type="Control" unique_id=1002886284]
+[sub_resource type="CanvasTexture" id="CanvasTexture_fthl7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hgi0f"]
+texture = SubResource("CanvasTexture_fthl7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6nfy"]
+texture = ExtResource("3_rx65j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fthl7"]
+texture = ExtResource("4_rx65j")
+
+[node name="PlayerSelectionScreen" type="Control" unique_id=1002886284 node_paths=PackedStringArray("playerButton2", "playerButton3", "playerButton4")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hvp63")
+playerButton2 = NodePath("2PlayerButton")
+playerButton3 = NodePath("3PlayerButton")
+playerButton4 = NodePath("4PlayerButton")
 
 [node name="Panel" type="Panel" parent="." unique_id=2022149330]
 modulate = Color(1, 1, 1, 0.11764706)
@@ -38,19 +56,150 @@ text = "Select the number of players"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemList" type="ItemList" parent="." unique_id=839678904]
+[node name="2PlayerButton" type="Button" parent="." unique_id=1044653694]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.125
-anchor_bottom = 0.194
-offset_left = 512.0
-offset_top = 304.0
-offset_right = 422.0
-offset_bottom = 215.288
-auto_width = true
-auto_height = true
-item_count = 3
-max_columns = 3
-item_0/text = "2"
-item_1/text = "3"
-item_2/text = "4"
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_top = 124.0
+offset_right = -85.0
+offset_bottom = 182.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "2"
+
+[node name="Panel" type="Panel" parent="2PlayerButton" unique_id=696175894]
+modulate = Color(0.2901961, 1, 0.32156864, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -35.0
+offset_right = 36.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hgi0f")
+
+[node name="3PlayerButton" type="Button" parent="." unique_id=1018906044]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 123.0
+offset_right = 24.0
+offset_bottom = 181.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "3"
+
+[node name="Panel" type="Panel" parent="3PlayerButton" unique_id=1115813943]
+modulate = Color(0.2901961, 1, 0.32156864, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -35.0
+offset_right = 36.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hgi0f")
+
+[node name="4PlayerButton" type="Button" parent="." unique_id=1041317285]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 68.0
+offset_top = 125.0
+offset_right = 131.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "4"
+
+[node name="Panel" type="Panel" parent="4PlayerButton" unique_id=765529855]
+modulate = Color(0.2901961, 1, 0.32156864, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -35.0
+offset_right = 36.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hgi0f")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1092350555]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 397.0
+offset_top = 512.0
+offset_right = 543.0
+offset_bottom = 569.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="RichTextLabel2" unique_id=1416350907]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_e6nfy")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1206920046]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 399.0
+offset_top = 562.0
+offset_right = 545.0
+offset_bottom = 619.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="RichTextLabel3" unique_id=1096018265]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fthl7")

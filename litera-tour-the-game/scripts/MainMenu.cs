@@ -66,6 +66,10 @@ public partial class MainMenu : Control
 		}
 	}
 
+	/// <summary>
+	/// Switches the highlight to the new button and hides the highlight of the previous button
+	/// </summary>
+	/// <param name="newButton"></param>
 	private void SwitchHighlightButton(Button newButton)
 	{
 		if (currentHighlightedButton != null)
