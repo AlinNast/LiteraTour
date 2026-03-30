@@ -16,7 +16,7 @@ public partial class MainMenu : Control
 	public override void _Ready()
 	{
 		// Connect button signals, basically thier behavior when pressed
-		startButton.Pressed += () => GD.Print("start button pressed");// GetTree().ChangeSceneToFile("Scenes/Level1.tscn");
+		startButton.Pressed += () =>  GetTree().ChangeSceneToFile("Scenes/PlayerSelectionScreen.tscn");
 		optionsButton.Pressed += () => GD.Print("Options button pressed");
 		quitButton.Pressed += () => GetTree().Quit();
 
