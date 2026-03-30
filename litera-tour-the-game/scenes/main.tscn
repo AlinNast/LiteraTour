@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://dx35wjiatjt67"]
+
+[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://LiteraTour_Prototype/prefabs/player.tscn" id="1_iovii"]
+[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://LiteraTour_Prototype/prefabs/prototype_crate.tscn" id="2_dgmo7"]
+[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://LiteraTour_Prototype/prefabs/enemy.tscn" id="3_8kgs6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_le1cq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0gdnv"]
+sky_material = SubResource("ProceduralSkyMaterial_le1cq")
+
+[sub_resource type="Environment" id="Environment_5lmwt"]
+background_mode = 2
+sky = SubResource("Sky_0gdnv")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="Main" type="Node3D" unique_id=1723582809]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=512122368]
+environment = SubResource("Environment_5lmwt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=903966096]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 19.5, 0)
+shadow_enabled = true
+
+[node name="Level" type="Node3D" parent="." unique_id=283761669]
+
+[node name="ground" type="CSGBox3D" parent="Level" unique_id=2055532075]
+use_collision = true
+size = Vector3(40, 0.2, 40)
+
+[node name="Player" parent="Level" unique_id=763983896 instance=ExtResource("1_iovii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 1.1, -9.1)
+
+[node name="Player2" parent="Level" unique_id=683390202 instance=ExtResource("1_iovii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 1.1, 2.4000003)
+
+[node name="Player3" parent="Level" unique_id=68275600 instance=ExtResource("1_iovii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 2.3)
+
+[node name="Player4" parent="Level" unique_id=1778575344 instance=ExtResource("1_iovii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1000001, 9.6)
+
+[node name="Crates" type="Node3D" parent="Level" unique_id=1976589922]
+
+[node name="PrototypeCrate" parent="Level/Crates" unique_id=1293245780 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.200001, 0.90000004, 6.5)
+
+[node name="PrototypeCrate2" parent="Level/Crates" unique_id=917836947 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.200001, 2.8, 6.5)
+
+[node name="PrototypeCrate3" parent="Level/Crates" unique_id=1260387250 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92, 0.90000004, -7.7999997)
+
+[node name="PrototypeCrate4" parent="Level/Crates" unique_id=590348857 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.88, 2.8, -7.7999997)
+
+[node name="PrototypeCrate5" parent="Level/Crates" unique_id=1486456824 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 0.90000004, -7.7999997)
+
+[node name="PrototypeCrate6" parent="Level/Crates" unique_id=1389308356 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 2.8, -7.7999997)
+
+[node name="PrototypeCrate7" parent="Level/Crates" unique_id=1834350721 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 0.90000004, 4.4000006)
+
+[node name="PrototypeCrate8" parent="Level/Crates" unique_id=781596946 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 2.8, 4.4000006)
+
+[node name="PrototypeCrate9" parent="Level/Crates" unique_id=480671211 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 0.90000004, 8.7)
+
+[node name="PrototypeCrate10" parent="Level/Crates" unique_id=2026586090 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 2.8, 8.7)
+
+[node name="PrototypeCrate11" parent="Level/Crates" unique_id=573358622 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.719999, 0.90000004, -3.5200002)
+
+[node name="PrototypeCrate12" parent="Level/Crates" unique_id=25708797 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.68, 2.8, -3.5200002)
+
+[node name="PrototypeCrate13" parent="Level/Crates" unique_id=874851396 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 0.90000004, -5.6000004)
+
+[node name="PrototypeCrate14" parent="Level/Crates" unique_id=803553460 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7, 2.8, -5.6000004)
+
+[node name="PrototypeCrate25" parent="Level/Crates" unique_id=1844775348 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.68, 0.90000004, -8.459998)
+
+[node name="PrototypeCrate26" parent="Level/Crates" unique_id=1787805640 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.720001, 2.8, -8.459998)
+
+[node name="PrototypeCrate27" parent="Level/Crates" unique_id=2022707191 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.90000135, 0.90000004, -8.459999)
+
+[node name="PrototypeCrate28" parent="Level/Crates" unique_id=1676850292 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.90000135, 2.8, -8.459999)
+
+[node name="PrototypeCrate29" parent="Level/Crates" unique_id=789859682 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.8800009, 0.90000004, -12.739999)
+
+[node name="PrototypeCrate30" parent="Level/Crates" unique_id=162018749 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.9199999, 2.8, -12.739999)
+
+[node name="PrototypeCrate31" parent="Level/Crates" unique_id=393295323 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.90000135, 0.90000004, -10.659999)
+
+[node name="PrototypeCrate32" parent="Level/Crates" unique_id=1477525016 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.90000135, 2.8, -10.659999)
+
+[node name="PrototypeCrate15" parent="Level/Crates" unique_id=843043125 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 0.90000004, 8.7)
+
+[node name="PrototypeCrate16" parent="Level/Crates" unique_id=1890874457 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 2.8, 8.7)
+
+[node name="PrototypeCrate17" parent="Level/Crates" unique_id=1992242128 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.250002, 0.90000004, 5.1000004)
+
+[node name="PrototypeCrate18" parent="Level/Crates" unique_id=1640916963 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.250002, 2.8, 5.1000004)
+
+[node name="PrototypeCrate19" parent="Level/Crates" unique_id=748107405 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.350002, 0.90000004, 5)
+
+[node name="PrototypeCrate20" parent="Level/Crates" unique_id=1572826028 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.350002, 2.8, 5)
+
+[node name="PrototypeCrate21" parent="Level/Crates" unique_id=724871559 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.050002, 0.90000004, 6.5)
+
+[node name="PrototypeCrate22" parent="Level/Crates" unique_id=743569841 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.050002, 2.8, 6.5)
+
+[node name="PrototypeCrate23" parent="Level/Crates" unique_id=175757393 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.050002, 0.90000004, 4.5)
+
+[node name="PrototypeCrate24" parent="Level/Crates" unique_id=917749224 instance=ExtResource("2_dgmo7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.050002, 2.8, 4.5)
+
+[node name="Enemy" parent="Level" unique_id=1226634607 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.200001, 1.1, -4)
+
+[node name="Enemy2" parent="Level" unique_id=1316601751 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000006, 1.1, -4)
+
+[node name="Enemy3" parent="Level" unique_id=177182160 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5000005, 1.1, -4)
+
+[node name="Enemy4" parent="Level" unique_id=1940042576 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 1.1, -4)
+
+[node name="Enemy5" parent="Level" unique_id=1296662802 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3999996, 1.1, -4)
+
+[node name="Enemy6" parent="Level" unique_id=1489441800 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.1, -4)
+
+[node name="Enemy7" parent="Level" unique_id=1805374529 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 1.1, -4)
+
+[node name="Enemy8" parent="Level" unique_id=1503216855 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 1.1, -4)
+
+[node name="Enemy9" parent="Level" unique_id=1663710929 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 1.1, -4)
+
+[node name="Enemy10" parent="Level" unique_id=1647440258 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 1.1, -4)
+
+[node name="Enemy11" parent="Level" unique_id=2019374510 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.200001, 1.1, 14.200001)
+
+[node name="Enemy12" parent="Level" unique_id=1640744139 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000006, 1.1, 14.200001)
+
+[node name="Enemy13" parent="Level" unique_id=1860812861 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5000005, 1.1, 14.200001)
+
+[node name="Enemy14" parent="Level" unique_id=1684209678 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 1.1, 14.200001)
+
+[node name="Enemy15" parent="Level" unique_id=756444871 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3999996, 1.1, 14.200001)
+
+[node name="Enemy16" parent="Level" unique_id=380244431 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.1, 14.200001)
+
+[node name="Enemy17" parent="Level" unique_id=1283590206 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 1.1, 14.200001)
+
+[node name="Enemy18" parent="Level" unique_id=927697340 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 1.1, 14.200001)
+
+[node name="Enemy19" parent="Level" unique_id=256021245 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 1.1, 14.200001)
+
+[node name="Enemy20" parent="Level" unique_id=629307248 instance=ExtResource("3_8kgs6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 1.1, 14.200001)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1065496213]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 10.117616, 9.2, 12.8)
