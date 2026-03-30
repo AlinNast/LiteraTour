@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://l5msl3bnrn63"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v6c45"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_f3mvw"]
+sky_material = SubResource("ProceduralSkyMaterial_v6c45")
+
+[sub_resource type="Environment" id="Environment_5yvoe"]
+background_mode = 2
+sky = SubResource("Sky_f3mvw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6c45"]
+albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3mvw"]
+albedo_color = Color(0.8396018, 0.00018462956, 0.7329712, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v6c45"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5yvoe"]
+
+[node name="Node3D" type="Node3D" unique_id=277089414]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1197711313]
+environment = SubResource("Environment_5yvoe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1852762884]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=316703535]
+transform = Transform3D(77.37617, 0, 0, 0, 0.9996801, 0, 0, 0, 10.803197, 0, 0, 0)
+size = Vector3(1, 1, 6.4123535)
+material = SubResource("StandardMaterial3D_v6c45")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2009809052]
+transform = Transform3D(1, 0, 0, 0, 0.94607407, 0.32395044, 0, -0.32395044, 0.94607407, 0, 13.513735, 24.339912)
+
+[node name="Player" type="Node3D" parent="." unique_id=165926784]
+
+[node name="Gun" type="Node3D" parent="Player" unique_id=622639290]
+
+[node name="ShootPos" type="Marker3D" parent="Player/Gun" unique_id=2093555504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0064566, -0.5721782)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=2007215370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5036254, 0)
+material_override = SubResource("StandardMaterial3D_f3mvw")
+mesh = SubResource("CapsuleMesh_v6c45")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player" unique_id=2140101757]
+transform = Transform3D(0.7865144, 0, 0, 0, 0.19056249, 0, 0, 0, 0.5566021, 0, 1.9981408, -0.2734725)
+mesh = SubResource("BoxMesh_5yvoe")
