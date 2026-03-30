@@ -11,12 +11,31 @@ config_version=5
 [application]
 
 config/name="LiteraTourTheGame"
-config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+run/main_scene="uid://0586eog26yyw"
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+config/icon="res://Textures/icon.svg"
 
 [dotnet]
 
 project/assembly_name="LiteraTourTheGame"
+
+[input]
+
+MenuSelectUp={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":11,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+MenuSelectDown={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":12,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+MenuPressButton={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
+]
+}
 
 [physics]
 

@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://0586eog26yyw"]
+
+[ext_resource type="Script" uid="uid://dvs6upkcago57" path="res://scripts/MainMenu.cs" id="1_8saeu"]
+[ext_resource type="Texture2D" uid="uid://dhn1aawiw032q" path="res://Textures/icon.svg" id="2_ghw46"]
+[ext_resource type="Texture2D" uid="uid://cfkhxotrbu1c1" path="res://Textures/xbox_button_color_a.png" id="3_df05h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8um5k"]
+texture = ExtResource("2_ghw46")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xim88"]
+texture = ExtResource("3_df05h")
+
+[node name="MainMenu" type="Control" unique_id=340852113 node_paths=PackedStringArray("startButton", "optionsButton", "quitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8saeu")
+startButton = NodePath("StartGameButton")
+optionsButton = NodePath("OptionsButton")
+quitButton = NodePath("ExitButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=557231732]
+modulate = Color(1, 1, 1, 0.11764706)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8um5k")
+
+[node name="StartGameButton" type="Button" parent="." unique_id=1290530361]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -40.0
+offset_right = 161.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "StarT Game"
+
+[node name="Panel" type="Panel" parent="StartGameButton" unique_id=580886142]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -21.75
+offset_right = -24.0
+offset_bottom = 18.25
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xim88")
+
+[node name="OptionsButton" type="Button" parent="." unique_id=289385664]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 47.0
+offset_right = 129.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="Panel" type="Panel" parent="OptionsButton" unique_id=1129011018]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -21.75
+offset_right = -24.0
+offset_bottom = 18.25
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xim88")
+
+[node name="ExitButton" type="Button" parent="." unique_id=714560776]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 98.0
+offset_right = 129.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"
+
+[node name="Panel" type="Panel" parent="ExitButton" unique_id=1505809498]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -21.75
+offset_right = -24.0
+offset_bottom = 18.25
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xim88")
