@@ -40,8 +40,8 @@ public partial class Enemy : CharacterBody3D
 		HandleEnemyState(delta);
 
 		// Debug
-		if (currentState != EnemyState.DEAD)
-			DebugDraw3D.DrawSphere(GlobalTransform.Origin, ChaseRange);
+		/*if (currentState != EnemyState.DEAD)
+			DebugDraw3D.DrawSphere(GlobalTransform.Origin, ChaseRange);*/
 
 		if (currentState == EnemyState.DEAD)
 			return;
@@ -218,6 +218,7 @@ public partial class Enemy : CharacterBody3D
 		var hitbox = GetNode<Area3D>("HitBox");
 		hitbox.SetDeferred("monitoring", false);
 		hitbox.SetDeferred("monitorable", false);
+
 		QueueFree();
 	}
 

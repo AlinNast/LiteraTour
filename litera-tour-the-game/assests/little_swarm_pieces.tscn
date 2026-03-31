@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bl0bqta6ax7l"]
+
+[ext_resource type="Script" uid="uid://bm7hmg44gwnkj" path="res://scripts/EnemyPieces.cs" id="1_43urv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7nel"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ce3do"]
+material = SubResource("StandardMaterial3D_w7nel")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1v7l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_igwi8"]
+size = Vector3(0.6, 0.2, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1v7l"]
+size = Vector3(0.6, 0.2, 0.4)
+
+[node name="LittleSwarmPieces" type="Node3D" unique_id=1245663405]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("1_43urv")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=554855294]
+
+[node name="body_mesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=628191186]
+mesh = SubResource("CapsuleMesh_ce3do")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=447925315]
+shape = SubResource("CapsuleShape3D_m1v7l")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=510548955]
+
+[node name="eyes_mesh" type="MeshInstance3D" parent="RigidBody3D2" unique_id=978781559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0.6, -0.5)
+mesh = SubResource("BoxMesh_igwi8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1810380127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0.6, -0.5)
+shape = SubResource("BoxShape3D_m1v7l")
