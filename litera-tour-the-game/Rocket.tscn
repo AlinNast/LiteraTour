@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bl0hu4a7kn0ke"]
+
+[ext_resource type="Script" uid="uid://dwv2adlqorbm3" path="res://Bullet.cs" id="1_al867"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j0y6u"]
+height = 6.0061035
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0y6u"]
+albedo_color = Color(0.40138838, 0.46031916, 0.25657746, 1)
+
+[node name="Rocket" type="Area3D" unique_id=615799267]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+script = ExtResource("1_al867")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1248898791]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.9054369e-08, -0.4359131)
+shape = SubResource("CapsuleShape3D_j0y6u")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1635049704]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1.586107)
+cone = true
+material = SubResource("StandardMaterial3D_j0y6u")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=313095985]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 3.0873302e-08, 0.32979167)
+height = 0.58740234
+material = SubResource("StandardMaterial3D_j0y6u")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=257880295]
+transform = Transform3D(0.9999998, 0, 0, 0, -4.371138e-08, -0.9999998, 0, 0.9999998, -4.371138e-08, 0, 6.700508e-08, 2.9354513)
+radius = 0.20214844
+height = 2.2406006
+material = SubResource("StandardMaterial3D_j0y6u")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." unique_id=427660085]
+transform = Transform3D(0.99999976, 0, 0, 0, -4.371138e-08, 0.9999998, 0, -0.9999998, -4.371138e-08, 0, 5.0322516e-08, 2.4820492)
+radius = 0.30078125
+height = 1.4772949
+cone = true
+material = SubResource("StandardMaterial3D_j0y6u")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=1935683747]
+transform = Transform3D(0.9999998, 0, 0, 0, -4.371138e-08, -0.9999998, 0, 0.9999998, -4.371138e-08, 0, 6.743162e-08, -1.8337129)
+radius = 0.047851563
+height = 0.1717987
+material = SubResource("StandardMaterial3D_j0y6u")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=622510975]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.9618037)
+cone = true
+material = SubResource("StandardMaterial3D_j0y6u")

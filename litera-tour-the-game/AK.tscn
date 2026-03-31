@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://drwr78wm8yqtb"]
+
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_70mh2"]
+[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://Bullet.tscn" id="2_v0kqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70mh2"]
+albedo_color = Color(0.45554018, 0.34181744, 0.22341803, 1)
+
+[node name="Ak" type="Node3D" unique_id=1480509106 node_paths=PackedStringArray("shootPos")]
+script = ExtResource("1_70mh2")
+bulletSpeed = 48.0
+bulletPrefab = ExtResource("2_v0kqv")
+shootPos = NodePath("Marker3D")
+gunType = 1
+fireRate = 0.1
+spread = 0.04
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1706768302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2993164, -2.605713)
+size = Vector3(1, 1.5986328, 6.211426)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=944007932]
+transform = Transform3D(1, 0, 0, 0, 0.89207375, 0.45188987, 0, -0.45188987, 0.89207375, 0, -0.8491354, -4.784573)
+size = Vector3(1, 1.4384766, 0.776001)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=1621356894]
+transform = Transform3D(1, 0, 0, 0, 0.9276018, 0.3735707, 0, -0.3735707, 0.9276018, 0, -0.9700157, -0.53075886)
+size = Vector3(1, 1.4384766, 0.776001)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=1719606950]
+transform = Transform3D(1, 0, 0, 0, 0.83370274, 0.55221355, 0, -0.55221355, 0.83370274, 0, -0.5750332, -1.5691243)
+size = Vector3(1, 0.8652344, 0.093566895)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=397374365]
+transform = Transform3D(1, 0, 0, 0, -0.1402965, -0.9901096, 0, 0.9901096, -0.1402965, 0, -0.8745405, -1.1550727)
+size = Vector3(1, 0.57470703, 0.093566895)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=85229491]
+transform = Transform3D(1, 0, 0, 0, 0.64645696, 0.7629505, 0, -0.7629505, 0.64645696, 0, -1.8027045, -3.9913936)
+size = Vector3(1, 1.4384766, 0.776001)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=2027069086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15722656, -6.303787)
+size = Vector3(1, 1.3144531, 2.7798462)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1652975212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14508057, -8.268354)
+size = Vector3(1, 0.70983887, 2.7798462)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1588978079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0182122, -9.352772)
+size = Vector3(1, 0.70983887, 0.15449524)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1642015607]
+transform = Transform3D(1, 0, 0, 0, 0.9851034, -0.17196347, 0, 0.17196347, 0.9851034, 0, -0.1155586, 1.1176872)
+size = Vector3(1, 1.1049805, 1.6695557)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1070829830]
+transform = Transform3D(1, 0, 0, 0, 0.95871073, -0.28438348, 0, 0.28438348, 0.95871073, 0, -0.66163105, 2.9097476)
+size = Vector3(1, 1.6962929, 2.5818481)
+material = SubResource("StandardMaterial3D_70mh2")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=741535207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12537694, 4.445474)

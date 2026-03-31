@@ -3,23 +3,17 @@
 [ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_n8kc8"]
 [ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://Bullet.tscn" id="2_awtjx"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n8kc8"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_awtjx"]
-sky_material = SubResource("ProceduralSkyMaterial_n8kc8")
-
-[sub_resource type="Environment" id="Environment_vjtcl"]
-background_mode = 2
-sky = SubResource("Sky_awtjx")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_n8kc8"]
+albedo_color = Color(0.427493, 0.42749307, 0.42749295, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q5t1a"]
 size = Vector3(0.7, 0.8, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8kc8"]
+albedo_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_1e1q2"]
+material = SubResource("StandardMaterial3D_n8kc8")
 size = Vector3(0.2, 0.3, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_n8kc8"]
@@ -44,40 +38,39 @@ bulletSpeed = 12.0
 bulletPrefab = ExtResource("2_awtjx")
 shootPos = NodePath("ShootPos")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1018533306]
-environment = SubResource("Environment_vjtcl")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1648925738]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=458380504]
 transform = Transform3D(0.999627, 0, -0.027311007, 0, 1, 0, 0.027311007, 0, 0.999627, 0, 0, 0)
+material_override = SubResource("ORMMaterial3D_n8kc8")
 mesh = SubResource("BoxMesh_q5t1a")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1043581811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028824687, 0, -1.6933548)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028824687, 0, -1.3494279)
 mesh = SubResource("BoxMesh_1e1q2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2109137686]
-transform = Transform3D(0.258819, 0.9659258, 0, -0.9659258, 0.258819, 0, 0, 0, 1, 0.5027031, -1.6673937, 0)
+transform = Transform3D(-0.99863154, -0.050163813, 0.014788078, 0.00925122, 0.108863644, 0.9940137, -0.051473238, 0.9927901, -0.10825059, -0.03118056, -1.0546116, 1.0609082)
+material_override = SubResource("ORMMaterial3D_n8kc8")
 mesh = SubResource("BoxMesh_n8kc8")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1071612343]
-transform = Transform3D(0.25881904, 0.96592593, 0, -0.05900201, 0.01580954, -0.99813277, -0.9641221, 0.2583357, 0.06108337, 0.48300076, -1.1227453, 0)
+transform = Transform3D(-0.012129602, 0.9997895, 0.016552791, -0.15891802, 0.014416104, -0.9871866, -0.9872171, -0.014604764, 0.1587097, -0.040951937, -1.8147287, 1.181403)
+material_override = SubResource("ORMMaterial3D_n8kc8")
 mesh = SubResource("BoxMesh_awtjx")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1676643273]
 transform = Transform3D(-2.9802322e-08, 1.0000001, 0, -1.0000001, -2.9802322e-08, 0, 0, 0, 1, -0.029453367, 0.02215153, 0)
+material_override = SubResource("ORMMaterial3D_n8kc8")
 mesh = SubResource("BoxMesh_vjtcl")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1108058372]
-transform = Transform3D(-0.9920995, 0.12545438, 0, -0.12545438, -0.9920995, 0, 0, 0, 1, 0.29163885, -0.7730958, 0)
+transform = Transform3D(-0.9920995, 0.12545438, 0, -0.10737945, -0.8491621, -0.5171011, -0.0648726, -0.51301575, 0.8559243, -0.011326015, -0.53148454, 0.3815365)
+material_override = SubResource("ORMMaterial3D_n8kc8")
 mesh = SubResource("BoxMesh_bc0en")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=147616835]
 transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, -0.057629943, 0.541736, 1.1348153)
+material_override = SubResource("ORMMaterial3D_n8kc8")
 mesh = SubResource("PrismMesh_vh0nm")
 
 [node name="ShootPos" type="Marker3D" parent="." unique_id=995713603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0063678026, 0, -2.304153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0063678026, 0, -1.6133759)

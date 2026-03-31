@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://62ptjpc3keny"]
+
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_h4wyr"]
+[ext_resource type="PackedScene" uid="uid://dgobw4uqh6glo" path="res://PLEASEWORKROCKET.tscn" id="2_pahev"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pahev"]
+albedo_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obupx"]
+albedo_color = Color(0.25134885, 0.27093136, 0.18531209, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhvqp"]
+albedo_color = Color(0.2984586, 0.31430143, 0.15976739, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sotb"]
+albedo_color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvgu7"]
+albedo_color = Color(0.55235267, 0.59857005, 0.5291003, 1)
+
+[node name="Rpg" type="Node3D" unique_id=387830702 node_paths=PackedStringArray("shootPos")]
+script = ExtResource("1_h4wyr")
+bulletSpeed = 6.0
+bulletPrefab = ExtResource("2_pahev")
+shootPos = NodePath("Marker3D")
+fireRate = 2.0
+spread = 0.001
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=645474562]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9.304144e-08, -2.12854)
+height = 5.706299
+sides = 12
+material = SubResource("StandardMaterial3D_pahev")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." unique_id=1992234069]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.5597527e-07, -4.862917)
+material_override = SubResource("StandardMaterial3D_obupx")
+radius = 1.0332031
+height = 2.8267822
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="." unique_id=256704903]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.8900226e-07, -6.838187)
+material_override = SubResource("StandardMaterial3D_obupx")
+radius = 1.0332031
+height = 1.2484436
+sides = 12
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="." unique_id=1682396821]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.9281524e-07, -9.847855)
+material_override = SubResource("StandardMaterial3D_obupx")
+radius = 0.234375
+height = 0.60385895
+sides = 12
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="." unique_id=572800333]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5712382e-07, -8.748299)
+material_override = SubResource("StandardMaterial3D_obupx")
+radius = 1.0332031
+height = 2.774231
+sides = 12
+cone = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1960539516]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 6.0188534e-09, 1.340953)
+material_override = SubResource("StandardMaterial3D_yhvqp")
+radius = 0.68359375
+height = 1.7246094
+sides = 12
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=763024022]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 6.0188534e-09, 2.6072164)
+material_override = SubResource("StandardMaterial3D_yhvqp")
+radius = 0.74853516
+height = 1.7246094
+sides = 12
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=1285363524]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 6.0188534e-09, 4.3500423)
+radius = 0.5258789
+height = 1.7246094
+sides = 12
+material = SubResource("StandardMaterial3D_8sotb")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=2144177486]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.0419756e-08, 5.097758)
+material_override = SubResource("StandardMaterial3D_yhvqp")
+radius = 1.121582
+height = 1.2912598
+sides = 12
+cone = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1151063939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.78375864, 0.15112305)
+material_override = SubResource("StandardMaterial3D_cvgu7")
+size = Vector3(0.4111328, 1.5571289, 0.6977539)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2130418883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2385926, -4.4595184)
+material_override = SubResource("StandardMaterial3D_cvgu7")
+size = Vector3(0.4111328, 2.4667969, 0.79016113)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=482908590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.2781725)

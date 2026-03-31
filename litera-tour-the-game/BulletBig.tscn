@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://tssk5blrkd7v"]
+
+[ext_resource type="Script" uid="uid://dwv2adlqorbm3" path="res://Bullet.cs" id="1_iuis1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3e43"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayd6b"]
+albedo_color = Color(0.73333335, 0.54509807, 0.22352941, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ayd6b"]
+material = SubResource("StandardMaterial3D_ayd6b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s4u5"]
+albedo_color = Color(0.73268694, 0.5435626, 0.22239968, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ayd6b"]
+material = SubResource("StandardMaterial3D_4s4u5")
+
+[node name="Bullet" type="Area3D" unique_id=2064039304]
+script = ExtResource("1_iuis1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2036407066]
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_x3e43")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=5913535]
+transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ayd6b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=172710670]
+transform = Transform3D(0.105, 2.7975289e-09, -4.0124393e-16, 0, -1.3987644e-09, -0.105, -9.1793915e-09, 0.032, -4.5896957e-09, 0, 0, 0.07095651)
+mesh = SubResource("CylinderMesh_ayd6b")
