@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dlpmhw1usybki"]
 
-[ext_resource type="Script" path="res://scripts/PrototypeCratePieces.cs" id="1_yyeld"]
+[ext_resource type="Script" uid="uid://r6nga4i26sxi" path="res://scripts/PrototypeCratePieces.cs" id="1_yyeld"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co3lk"]
 resource_name = "Material.001"
