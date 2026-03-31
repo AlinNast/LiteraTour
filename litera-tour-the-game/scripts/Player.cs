@@ -28,6 +28,7 @@ public partial class Player : CharacterBody3D
         HandleMovement(delta);
 		HandleAiming(delta);
 		HandleShooting(delta);
+		HandleAddtionalInputs(delta);
     }
 	/// <summary>
 	/// handle player movement
@@ -88,17 +89,13 @@ public partial class Player : CharacterBody3D
         bullet.LookAt(bullet.GlobalPosition + -GlobalTransform.Basis.Z, Vector3.Up);
 	}
 
-
-
-
-	/// <summary>
-	/// test
-	/// </summary>
-	/// <returns></returns>
-	private bool asssa()
+	private void HandleAddtionalInputs(double delta)
 	{
-		return true;
+		// Start button to go back to main menu
+		if (Input.IsActionJustPressed("MenuHomeButton"))
+		{
+			GetTree().ChangeSceneToFile("uid://0586eog26yyw");
+		}
 	}
-
 
 }
