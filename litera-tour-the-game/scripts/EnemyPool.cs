@@ -32,7 +32,6 @@ public partial class EnemyPool : Node3D
         Enemy enemy = pool.Count > 0 ? pool.Dequeue() : CreateEnemy();
 
         enemy.GlobalPosition = position;
-        enemy.enemyHomePosition = position;
         enemy.ResetEnemy();
         enemy.Visible = true;
         enemy.SetPhysicsProcess(true);

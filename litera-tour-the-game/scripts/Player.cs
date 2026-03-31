@@ -28,7 +28,6 @@ public partial class Player : CharacterBody3D
 
 		if (GlobalPosition != lastPosition)
 		{
-			GameEvents.Instance.NotifyPlayerMoved(this);
 			lastPosition = GlobalPosition;
 		}
 		
@@ -93,13 +92,10 @@ public partial class Player : CharacterBody3D
 		bullet.GlobalPosition = gunPoint.GlobalPosition;
 		bullet.GlobalRotation = GlobalRotation;
         bullet.LookAt(bullet.GlobalPosition + -GlobalTransform.Basis.Z, Vector3.Up);
-
-		// Notify game event when shooting
-		GameEvents.Instance.NotifyPlayerShoot(this);
 	}
 
 	private void HandlePlayerDead(double delta)
 	{
-		GameEvents.Instance.NotifyPlayerDied(this);
+		//DEAD
 	}
 }

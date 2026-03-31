@@ -10,7 +10,6 @@ public partial class Enemy : CharacterBody3D
 		IDLE,
 		CHASING,
 		WAITING,
-		RETURNING,
 		DEAD
 	}
 
@@ -22,41 +21,28 @@ public partial class Enemy : CharacterBody3D
 	[Export] public float WaitTime = 1f;
 	[Export] public float LookRotateSpeed = 5f;
 	[Export] public PackedScene BrokenModel;
-
-	[Export] public float ChaseCooldown = 4f;
-	public Vector3 enemyHomePosition;
+	
 	private int health;
 	private bool IsPlayerInside = false;
 	private Player targetPlayer = null;
 	private float retargetTimer = 0f;
 	private float waitTimer = 0f;
-	private float chaseCooldownTimer = 0f;
 
 	private EnemyState currentState = EnemyState.IDLE;
 
     public override void _Ready()
     {
-		GameEvents.Instance.PlayerMoved += OnPlayerMoved;
-		GameEvents.Instance.PlayerFired += OnPlayerShoot;
-		//enemyHomePosition = GlobalPosition;		
         health = MaxHealth;
 		HandleChoosingTarget();
     }
-
-    public override void _ExitTree()
-    {
-        GameEvents.Instance.PlayerMoved -= OnPlayerMoved;
-		GameEvents.Instance.PlayerFired -= OnPlayerShoot;
-    }
-
 
     public override void _PhysicsProcess(double delta)
     {	
 		HandleEnemyState(delta);
 
 		// Debug
-		/*if (currentState != EnemyState.DEAD)
-			DebugDraw3D.DrawSphere(GlobalTransform.Origin, ChaseRange);*/
+		if (currentState != EnemyState.DEAD)
+			DebugDraw3D.DrawSphere(GlobalTransform.Origin, ChaseRange);
 
 		if (currentState == EnemyState.DEAD)
 			return;
@@ -126,9 +112,6 @@ public partial class Enemy : CharacterBody3D
 			case EnemyState.WAITING:
 				UpdateWaiting(delta);
 				break;
-			case EnemyState.RETURNING:
-				UpdateReturning(delta);
-				break;
 			case EnemyState.DEAD:
 				UpdateDead();
 				break;
@@ -156,26 +139,7 @@ public partial class Enemy : CharacterBody3D
 	{
 		if (targetPlayer == null)
 		{
-			currentState = EnemyState.RETURNING;
 			return;
-		}
-
-		if (!IsTargetPlayerInRange())
-		{
-			//currentState = EnemyState.IDLE;
-
-			chaseCooldownTimer += (float)delta;
-			
-			if (chaseCooldownTimer >= ChaseCooldown)
-			{
-				chaseCooldownTimer = 0f;
-				currentState = EnemyState.RETURNING;
-				return;
-			}	
-		}
-		else
-		{
-			chaseCooldownTimer = 0f; // reset if player re enter enemy range
 		}
 
 		if (IsPlayerInside)
@@ -229,47 +193,6 @@ public partial class Enemy : CharacterBody3D
 		// Enemy waiting or attack cooldown animation
 	}
 
-	private void UpdateReturning(double delta)
-	{
-		if (IsTargetPlayerInRange())
-		{
-			chaseCooldownTimer = 0f;
-			currentState = EnemyState.CHASING;
-			return;
-		}
-
-		if (IsAnyPlayerInRange())
-		{
-			currentState = EnemyState.CHASING;
-			return;
-		}
-
-		Vector3 gravity = GetGravity();
-		Vector3 velocity = Velocity;
-		velocity += gravity * (float)delta;
-
-		Vector3 direction = enemyHomePosition - GlobalPosition;
-		direction.Y = 0;
-
-		if (direction.Length() < 0.2f)
-		{
-			currentState = EnemyState.IDLE;
-			velocity.X = 0;
-			velocity.Z = 0;
-			MoveAndSlide();
-			return;
-		}
-		
-		Vector3 move = direction.Normalized() * MoveSpeed;
-		velocity.X = move.X;
-		velocity.Z = move.Z;
-		
-		Velocity = velocity;
-		MoveAndSlide();
-
-		SmoothLookAt(enemyHomePosition, (float)delta);
-	}
-
 	private bool isDead = false;
 
 	private void UpdateDead()
@@ -279,9 +202,6 @@ public partial class Enemy : CharacterBody3D
 		
 		isDead = true;
 		GetNode<CollisionShape3D>("HitBox/CollisionShape3D").Disabled = true;
-
-		GameEvents.Instance.PlayerMoved -= OnPlayerMoved;
-		GameEvents.Instance.PlayerFired -= OnPlayerShoot;
 
 		if (currentState == EnemyState.DEAD)
 			return;
@@ -320,15 +240,11 @@ public partial class Enemy : CharacterBody3D
 		health = MaxHealth;
 		currentState = EnemyState.IDLE;
 		
-		chaseCooldownTimer = 0f;
 		waitTimer = 0f;
 		retargetTimer = 0f;
 
 		Velocity = Vector3.Zero;
 		targetPlayer = null;
-
-		GameEvents.Instance.PlayerMoved += OnPlayerMoved;
-		GameEvents.Instance.PlayerFired += OnPlayerShoot;
 	}
 
 	private void HandleChoosingTarget()
