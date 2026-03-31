@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dx35wjiatjt67"]
 
-[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://prefabs/player.tscn" id="1_iovii"]
-[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://prefabs/prototype_crate.tscn" id="2_dgmo7"]
-[ext_resource type="PackedScene" uid="uid://cil7dg5l4f2nw" path="res://prefabs/enemy_spawner.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cr3ylqrk05wqk" path="res://prefabs/enemy_pool.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://assests/player.tscn" id="1_iovii"]
+[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://assests/prototype_crate.tscn" id="2_dgmo7"]
+[ext_resource type="PackedScene" uid="uid://cil7dg5l4f2nw" path="res://assests/enemy_spawner.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://assests/enemy.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_le1cq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -141,20 +141,20 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1065496213]
 transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 10.117616, 9.2, 12.8)
 
-[node name="EnemySpawner" parent="." unique_id=1323560826 node_paths=PackedStringArray("Pool", "SpawnPointsParent") instance=ExtResource("3_sugp2")]
+[node name="EnemySpawner" parent="." unique_id=1323560826 node_paths=PackedStringArray("SpawnLocation") instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-Pool = NodePath("EnemyPool")
-SpawnPointsParent = NodePath("SpawnerPoints")
+EnemyType = ExtResource("4_jyhfs")
+SpawnLocation = NodePath("SpawnP1")
+MaxEnemySpawn = 3
 
-[node name="EnemyPool" parent="EnemySpawner" unique_id=1767619218 instance=ExtResource("4_jyhfs")]
+[node name="SpawnP1" type="Node3D" parent="EnemySpawner" unique_id=1651940207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
 
-[node name="SpawnerPoints" type="Node3D" parent="EnemySpawner" unique_id=1381340794]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+[node name="EnemySpawner2" parent="." unique_id=1004953619 node_paths=PackedStringArray("SpawnLocation") instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+EnemyType = ExtResource("4_jyhfs")
+SpawnLocation = NodePath("SpawnP2")
+MaxEnemySpawn = 1
 
-[node name="P1" type="Node3D" parent="EnemySpawner/SpawnerPoints" unique_id=1291771385]
-
-[node name="P2" type="Node3D" parent="EnemySpawner/SpawnerPoints" unique_id=1617901726]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
-
-[node name="P3" type="Node3D" parent="EnemySpawner/SpawnerPoints" unique_id=1061566549]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+[node name="SpawnP2" type="Node3D" parent="EnemySpawner2" unique_id=251572956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.931168, 11, 0)

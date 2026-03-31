@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4tvtk801gjua"]
 
 [ext_resource type="Script" uid="uid://byjkln442j277" path="res://scripts/Enemy.cs" id="1_6n8dw"]
-[ext_resource type="PackedScene" uid="uid://bdfdnaipgvk34" path="res://prefabs/enemy_pieces.tscn" id="2_1me52"]
+[ext_resource type="PackedScene" uid="uid://bdfdnaipgvk34" path="res://assests/enemy_pieces.tscn" id="2_1me52"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qghjj"]
 albedo_color = Color(1, 0, 0, 1)

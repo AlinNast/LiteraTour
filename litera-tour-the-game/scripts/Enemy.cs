@@ -3,7 +3,6 @@ using System;
 
 public partial class Enemy : CharacterBody3D
 {
-	public EnemyPool Pool { get; set; }
 	public event Action<Enemy> Died;
 	public enum EnemyState
 	{
@@ -215,16 +214,11 @@ public partial class Enemy : CharacterBody3D
         	brokenModelInstantiate.Transform = this.Transform;
 		}
 
-		// Notify enemy spawner script
-		Died?.Invoke(this);
-
 		// Fixed joit physics engine screaming error by disable Area3D moitoring
 		var hitbox = GetNode<Area3D>("HitBox");
 		hitbox.SetDeferred("monitoring", false);
 		hitbox.SetDeferred("monitorable", false);
-
-		// Return dead enemy to pool
-		Pool.ReturnEnemy(this);
+		QueueFree();
 	}
 
 	public void ResetEnemy()
@@ -310,7 +304,6 @@ public partial class Enemy : CharacterBody3D
 
 		if (area is Bullet bullet)
 		{
-			bullet.QueueFree();
 			TakeDamage(bullet.Damage);
 		}
 	}

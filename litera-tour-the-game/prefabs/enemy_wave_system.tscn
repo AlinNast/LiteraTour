@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://o2ujxwvkevpk"]
-
-[ext_resource type="Script" uid="uid://g3rbcvx6fq2" path="res://scripts/EnemyWaveSystem.cs" id="1_dt3ch"]
-
-[node name="EnemyWaveSystem" type="Node" unique_id=796975433]
-script = ExtResource("1_dt3ch")
