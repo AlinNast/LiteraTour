@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cb2hfcggnvw3j"]
 
 [ext_resource type="Script" uid="uid://b0gbq6fwr2epl" path="res://scripts/PrototypeCrate.cs" id="1_ss56o"]
-[ext_resource type="PackedScene" uid="uid://dlpmhw1usybki" path="res://prefabs/prototype_crate_pieces.tscn" id="2_hbksf"]
+[ext_resource type="PackedScene" uid="uid://dlpmhw1usybki" path="res://assets/prototype_crate_pieces.tscn" id="2_hbksf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ah6r4"]
 rough = true
@@ -51,6 +51,8 @@ shadow_mesh = SubResource("ArrayMesh_h6mua")
 size = Vector3(1.6, 1.6, 1.6)
 
 [node name="PrototypeCrate" type="RigidBody3D" unique_id=1293245780]
+collision_layer = 7
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_ah6r4")
 can_sleep = false
 script = ExtResource("1_ss56o")

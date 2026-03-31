@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class LevelManager : Node
 {
@@ -33,6 +34,8 @@ public partial class LevelManager : Node
 		Node3D levelInstance = currentlevel.Instantiate() as Node3D;
 
 		AddChild(levelInstance);
+
+		SpawnEnemiesFromLevel(levelInstance);
 
 
 		for (int i = 0; i < numberOfPlayers; i++)
@@ -71,5 +74,55 @@ public partial class LevelManager : Node
 		
 	}
 
+	public void SpawnEnemiesFromLevel(Node3D level)
+	{
+		foreach (Node child in level.GetTree().GetNodesInGroup("enemy_spawn_data"))
+		{
+			if (child is EnemySpawnData enemySpawnData)
+			{
+				for (int i = 0; i < enemySpawnData.MaxActiveEnemies; i++)
+				{
+					Enemy enemy = enemySpawnData.EnemyType.Instantiate<Enemy>();
+					AddChild(enemy);
+
+					Vector3 offset = new Vector3(i * 1.5f, 0, 0);
+					enemy.GlobalPosition = enemySpawnData.SpawnPoint.GlobalPosition + offset;
+
+					enemySpawnData.ActiveEnemies++;
+					enemy.Died += (enemy) => OnEnemyDied(enemySpawnData);
+				}
+			}
+		}
+	}
+
+	private async void OnEnemyDied(EnemySpawnData enemySpawnData)
+	{
+		enemySpawnData.ActiveEnemies--;
+	
+		if (!enemySpawnData.RespawnEnemy)
+			return;
+
+		if (enemySpawnData.ActiveEnemies < enemySpawnData.MaxActiveEnemies)
+		{
+			await ToSignal(GetTree().CreateTimer(enemySpawnData.RespawnDelay), "timeout");
+			SpawnOneEnemy(enemySpawnData);
+		}
+	}
+
+	private void SpawnOneEnemy(EnemySpawnData enemySpawnData)
+	{
+		if (enemySpawnData.TotalEnemySpawnLimit != -1 && enemySpawnData.TotalEnemySpawned >= enemySpawnData.TotalEnemySpawnLimit)
+			return;
+		
+		enemySpawnData.TotalEnemySpawned++;
+
+		Enemy enemy = enemySpawnData.EnemyType.Instantiate<Enemy>();
+		AddChild(enemy);
+
+		enemy.GlobalPosition = enemySpawnData.SpawnPoint.GlobalPosition;
+		enemySpawnData.ActiveEnemies++;
+
+		enemy.Died += (enemy) => OnEnemyDied(enemySpawnData);
+	}
 
 }

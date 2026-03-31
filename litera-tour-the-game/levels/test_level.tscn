@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://assets/Breakable_area_to_rename.tscn" id="4_valg5"]
 [ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://assets/prototype_crate.tscn" id="5_5adhy"]
 [ext_resource type="Texture2D" uid="uid://knakdlkrq2xf" path="res://addons/kenney_prototype_textures/red/texture_13.png" id="8_1qf6k"]
+[ext_resource type="Script" uid="uid://c22erfq3l5433" path="res://scripts/EnemySpawnData.cs" id="8_wndkh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k8myw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -195,6 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1998165078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)
+layers = 3
 mesh = SubResource("BoxMesh_yxcr3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=877284036]
@@ -488,11 +490,8 @@ shape = SubResource("ConcavePolygonShape3D_f4jyt")
 [node name="Platform" parent="." unique_id=1817988188 instance=ExtResource("1_rex8v")]
 transform = Transform3D(0.6922943, 0, 0.72161525, 0, 1, 0, -0.72161525, 0, 0.6922943, 49.110046, 1, 33.339535)
 
-[node name="Enemy" parent="." unique_id=1226634607 instance=ExtResource("3_r0nut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.781193, 1, 24.455538)
-
 [node name="Node3D" parent="." unique_id=236369665 instance=ExtResource("4_valg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8206139, 0, 28.338219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8121567, -0.033447266, 28.360672)
 
 [node name="PrototypeCrate" parent="." unique_id=1293245780 instance=ExtResource("5_5adhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15901089, 0.8, 35.534737)
@@ -644,24 +643,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7119446, 2.3999984, 43.468
 [node name="PrototypeCrate50" parent="." unique_id=898884858 instance=ExtResource("5_5adhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8233776, 2.4000003, 45.40227)
 
-[node name="Enemy2" parent="." unique_id=830181766 instance=ExtResource("3_r0nut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.78538, 1.0000019, 37.049683)
-
-[node name="Enemy3" parent="." unique_id=1516699974 instance=ExtResource("3_r0nut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.635874, 1.0000019, 39.059822)
-
-[node name="Enemy4" parent="." unique_id=1981353908 instance=ExtResource("3_r0nut")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.356276, 1, 40.9887)
-
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=2132869068]
 
 [node name="Point1" type="MeshInstance3D" parent="SpawnPoints" unique_id=579433004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5638752, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.551362, 4.3792276, 25.195778)
 material_override = SubResource("StandardMaterial3D_0gr2h")
 mesh = SubResource("BoxMesh_41g52")
 
 [node name="Point2" type="MeshInstance3D" parent="SpawnPoints" unique_id=665336800]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.890568, 0.56387806, -27.037867)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.890568, 4.4515333, -27.037867)
 material_override = SubResource("StandardMaterial3D_mj3i5")
 mesh = SubResource("BoxMesh_41g52")
 
@@ -669,3 +659,19 @@ mesh = SubResource("BoxMesh_41g52")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.387121, 0.56387806, -30.157328)
 material_override = SubResource("StandardMaterial3D_7de1v")
 mesh = SubResource("BoxMesh_41g52")
+
+[node name="EnemySpawnData" type="Node" parent="." unique_id=2123512912]
+
+[node name="EnemyType1" type="Node" parent="EnemySpawnData" unique_id=719125360 node_paths=PackedStringArray("SpawnPoint")]
+script = ExtResource("8_wndkh")
+EnemyType = ExtResource("3_r0nut")
+SpawnPoint = NodePath("../../SpawnPoints/Point1")
+MaxActiveEnemies = 2
+RespawnEnemy = true
+TotalEnemySpawnLimit = 2
+
+[node name="EnemyType2" type="Node" parent="EnemySpawnData" unique_id=566315472 node_paths=PackedStringArray("SpawnPoint")]
+script = ExtResource("8_wndkh")
+EnemyType = ExtResource("3_r0nut")
+SpawnPoint = NodePath("../../SpawnPoints/Point2")
+MaxActiveEnemies = 4
