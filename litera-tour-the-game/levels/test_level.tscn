@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c4hhals5bjmlm" path="res://addons/kenney_prototype_textures/green/texture_12.png" id="2_1qf6k"]
 [ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://characters/enemy.tscn" id="3_r0nut"]
 [ext_resource type="Texture2D" uid="uid://cq8nrwl256857" path="res://addons/kenney_prototype_textures/dark/texture_04.png" id="4_paa45"]
-[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://assets/Breakable_area_to_rename.tscn" id="4_valg5"]
-[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://assets/prototype_crate.tscn" id="5_5adhy"]
+[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://environment/testArea.tscn" id="4_valg5"]
+[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://environment/props/prototype_crate.tscn" id="5_5adhy"]
 [ext_resource type="Texture2D" uid="uid://c3fy71ui11m5e" path="res://addons/kenney_prototype_textures/light/texture_09.png" id="5_axl34"]
 [ext_resource type="Texture2D" uid="uid://knakdlkrq2xf" path="res://addons/kenney_prototype_textures/red/texture_13.png" id="8_1qf6k"]
-[ext_resource type="PackedScene" uid="uid://br4jsi7f2iv3l" path="res://assets/little_test.tscn" id="8_ly3hx"]
+[ext_resource type="PackedScene" uid="uid://ynbwj332fptq" path="res://environment/props/barrel.tscn" id="8_ly3hx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k8myw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

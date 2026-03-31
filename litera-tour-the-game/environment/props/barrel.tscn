@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://br4jsi7f2iv3l"]
+[gd_scene format=3 uid="uid://ynbwj332fptq"]
 
-[ext_resource type="Script" uid="uid://dlnvyvtepafjo" path="res://assets/LittleTest.cs" id="1_2rxa2"]
-[ext_resource type="PackedScene" uid="uid://bhff8gp8fyljy" path="res://assets/fking_broke.tscn" id="2_gdksm"]
-[ext_resource type="PackedScene" uid="uid://dywndqyk8e3rt" path="res://assets/flame_ground.tscn" id="3_r2577"]
+[ext_resource type="Script" uid="uid://dlnvyvtepafjo" path="res://scripts/LittleTest.cs" id="1_2rxa2"]
+[ext_resource type="PackedScene" uid="uid://bhff8gp8fyljy" path="res://environment/props/barrel_break.tscn" id="2_gdksm"]
+[ext_resource type="PackedScene" uid="uid://dywndqyk8e3rt" path="res://environment/props/flame_ground.tscn" id="3_r2577"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bu1fi"]
 bottom_radius = 0.42
