@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://l5msl3bnrn63"]
 
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_f3mvw"]
+[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://Bullet.tscn" id="2_5yvoe"]
+[ext_resource type="PackedScene" uid="uid://cop3jkmd6j6c5" path="res://Pistol.tscn" id="3_6i505"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v6c45"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,20 +42,63 @@ size = Vector3(1, 1, 6.4123535)
 material = SubResource("StandardMaterial3D_v6c45")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2009809052]
-transform = Transform3D(1, 0, 0, 0, 0.94607407, 0.32395044, 0, -0.32395044, 0.94607407, 0, 13.513735, 24.339912)
+transform = Transform3D(-0.18760653, 0.16362709, 0.96851945, -0.027147539, 0.9847866, -0.17163396, -0.9818691, -0.058492668, -0.18031035, -3.6215634, 1.7914686, -1.8210826)
 
-[node name="Player" type="Node3D" parent="." unique_id=165926784]
+[node name="Player2" type="Node3D" parent="." unique_id=681846994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6985259, 0, 0)
 
-[node name="Gun" type="Node3D" parent="Player" unique_id=622639290]
+[node name="Gun" type="Node3D" parent="Player2" unique_id=1904052863 node_paths=PackedStringArray("shootPos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6108124, -0.64831215)
+script = ExtResource("1_f3mvw")
+bulletSpeed = 3.0
+bulletPrefab = ExtResource("2_5yvoe")
+shootPos = NodePath("ShootPos")
 
-[node name="ShootPos" type="Marker3D" parent="Player/Gun" unique_id=2093555504]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0064566, -0.5721782)
+[node name="ShootPos" type="Marker3D" parent="Player2/Gun" unique_id=1840447231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010994196, 0.40251613, 0.020705163)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=2007215370]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player2" unique_id=1124783880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5036254, 0)
 material_override = SubResource("StandardMaterial3D_f3mvw")
 mesh = SubResource("CapsuleMesh_v6c45")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player" unique_id=2140101757]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player2" unique_id=35237185]
 transform = Transform3D(0.7865144, 0, 0, 0, 0.19056249, 0, 0, 0, 0.5566021, 0, 1.9981408, -0.2734725)
 mesh = SubResource("BoxMesh_5yvoe")
+
+[node name="Player4" type="Node3D" parent="." unique_id=1366532290]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6985259, 0, -10.8162365)
+
+[node name="Gun" type="Node3D" parent="Player4" unique_id=2081022902 node_paths=PackedStringArray("shootPos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6108124, -0.64831215)
+script = ExtResource("1_f3mvw")
+bulletSpeed = 3.0
+bulletPrefab = ExtResource("2_5yvoe")
+shootPos = NodePath("ShootPos")
+
+[node name="ShootPos" type="Marker3D" parent="Player4/Gun" unique_id=115664015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010994196, 0.40251613, 0.020705163)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player4" unique_id=707100988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5036254, 0)
+material_override = SubResource("StandardMaterial3D_f3mvw")
+mesh = SubResource("CapsuleMesh_v6c45")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player4" unique_id=816189605]
+transform = Transform3D(0.7865144, 0, 0, 0, 0.19056249, 0, 0, 0, 0.5566021, 0, 1.9981408, -0.2734725)
+mesh = SubResource("BoxMesh_5yvoe")
+
+[node name="Player3" type="Node3D" parent="." unique_id=1625573842]
+transform = Transform3D(0.9725408, 0, 0.23273253, 0, 1, 0, -0.23273253, 0, 0.9725408, -5.8853645, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player3" unique_id=649568331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5036254, 0)
+material_override = SubResource("StandardMaterial3D_f3mvw")
+mesh = SubResource("CapsuleMesh_v6c45")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player3" unique_id=456839004]
+transform = Transform3D(0.7865144, 0, 0, 0, 0.19056249, 0, 0, 0, 0.5566021, 0, 1.9981408, -0.2734725)
+mesh = SubResource("BoxMesh_5yvoe")
+
+[node name="Pistol" parent="Player3" unique_id=1954340698 instance=ExtResource("3_6i505")]
+transform = Transform3D(0.15618527, -0.12490836, -0.0020254888, 0.12492413, 0.15615259, 0.0032163847, -0.00042734668, -0.0037768856, 0.19996405, 0.41403103, 1.6952782, -0.63138235)
