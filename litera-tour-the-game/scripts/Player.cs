@@ -10,6 +10,12 @@ public partial class Player : CharacterBody3D
 	private Marker3D gunPoint;
 	private Vector3 lastPosition;
 
+	public string moveLeft = "move_left";
+	public string moveRight = "move_right";
+	public string moveUp = "move_forward";
+	public string moveDown = "move_backward";
+
+
     public override void _Ready()
     {
 		AddToGroup("players");
@@ -30,13 +36,14 @@ public partial class Player : CharacterBody3D
 		HandleShooting(delta);
 		HandlePlayerDead(delta);
     }
+	
 	/// <summary>
 	/// handle player movement
 	/// </summary>
 	/// <param name="delta"> delta is godot run time</param>
 	private void HandleMovement(double delta)
 	{
-		Vector2 input = Input.GetVector("move_left", "move_right", "move_forward", "move_backward");
+		Vector2 input = Input.GetVector(moveLeft, moveRight, moveUp, moveDown);
 
 		Vector3 direction = new Vector3(input.X, 0, input.Y);
 
@@ -57,31 +64,6 @@ public partial class Player : CharacterBody3D
 			// Controller aiming
 			Vector3 aimDirection = new Vector3(aimStick.X, 0, aimStick.Y).Normalized();
 			RotateToward(aimDirection, delta);
-		}
-		else
-		{
-			// Mouse aiming
-			AimAtMouse(delta);
-		}
-	}
-
-	private void AimAtMouse(double delta)
-	{
-		var camera = GetViewport().GetCamera3D();
-		var mousePosition = GetViewport().GetMousePosition();
-
-		var rayOrigin = camera.ProjectRayOrigin(mousePosition);
-		var rayDirection = camera.ProjectRayNormal(mousePosition);
-
-		var plane = new Plane(Vector3.Up, GlobalPosition.Y);
-
-		Vector3? hit = plane.IntersectsRay(rayOrigin, rayDirection);
-
-		if (hit != null)
-		{
-			Vector3 hitPosition = hit.Value;
-			Vector3 lookDirection = (hitPosition - GlobalPosition).Normalized();
-			RotateToward(lookDirection, delta);
 		}
 	}
 

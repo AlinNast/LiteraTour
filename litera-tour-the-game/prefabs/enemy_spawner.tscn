@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d11h276fa0mwv" path="res://scripts/EnemySpawner.cs" id="1_ksrlw"]
 
-[node name="EnemySpawner" type="Node3D" unique_id=1323560826 node_paths=PackedStringArray("Pool")]
+[sub_resource type="BoxMesh" id="BoxMesh_ksrlw"]
+
+[node name="EnemySpawner" type="Node3D" unique_id=1323560826]
 script = ExtResource("1_ksrlw")
-Pool = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1510190840]
+mesh = SubResource("BoxMesh_ksrlw")

@@ -20,10 +20,10 @@ public partial class Enemy : CharacterBody3D
 	[Export] public float ChaseRange = 10f;
 	[Export] public float RetargetTime = 2f;
 	[Export] public float WaitTime = 1f;
-	[Export] public float ChaseCooldown = 4f;
 	[Export] public float LookRotateSpeed = 5f;
 	[Export] public PackedScene BrokenModel;
 
+	[Export] public float ChaseCooldown = 4f;
 	public Vector3 enemyHomePosition;
 	private int health;
 	private bool IsPlayerInside = false;
@@ -38,7 +38,7 @@ public partial class Enemy : CharacterBody3D
     {
 		GameEvents.Instance.PlayerMoved += OnPlayerMoved;
 		GameEvents.Instance.PlayerFired += OnPlayerShoot;
-		enemyHomePosition = GlobalPosition;		
+		//enemyHomePosition = GlobalPosition;		
         health = MaxHealth;
 		HandleChoosingTarget();
     }
@@ -327,8 +327,6 @@ public partial class Enemy : CharacterBody3D
 		Velocity = Vector3.Zero;
 		targetPlayer = null;
 
-		//GlobalPosition = enemyHomePosition;
-
 		GameEvents.Instance.PlayerMoved += OnPlayerMoved;
 		GameEvents.Instance.PlayerFired += OnPlayerShoot;
 	}
@@ -343,7 +341,7 @@ public partial class Enemy : CharacterBody3D
 			return;
 		}	
 		
-		// Choose closet player.
+		// Choose closest player.
 		float closestDistance = float.MaxValue;
 
 		foreach (Node node in players)
