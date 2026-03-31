@@ -13,6 +13,7 @@ public partial class GameInstance
 	// ** TEMPORARY **
 
 
+    public List<string> levelList = ["uid://b12vb63dc5058"];
 
 
 	// ** TEMPORARY **
