@@ -99,7 +99,8 @@ public partial class PlayerSelectionScreen : Control
 		// Then change to the next scene, such as the level selection screen
 
 
-		GetTree().ChangeSceneToFile(GameInstance.Instance.levelList[0]);
-		//GameInstance.Instance.StartGame(numPlayers);
+		LevelManager.Instance.StartFirstLevel(numPlayers);
+		GetTree().ChangeSceneToFile("uid://bjailpsf0dqb8");
+		QueueFree();
 	}
 }

@@ -489,9 +489,6 @@ shape = SubResource("ConcavePolygonShape3D_f4jyt")
 [node name="Platform" parent="." unique_id=1817988188 instance=ExtResource("1_rex8v")]
 transform = Transform3D(0.6922943, 0, 0.72161525, 0, 1, 0, -0.72161525, 0, 0.6922943, 49.110046, 1, 33.339535)
 
-[node name="Player" parent="." unique_id=763983896 instance=ExtResource("2_k8myw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.652714, 0.99999905, -0.45422173)
-
 [node name="Enemy" parent="." unique_id=1226634607 instance=ExtResource("3_r0nut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.781193, 1, 24.455538)
 
