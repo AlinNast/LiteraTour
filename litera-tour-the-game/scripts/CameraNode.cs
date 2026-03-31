@@ -8,6 +8,8 @@ public partial class CameraNode : Node3D
 	Node3D cameraDisplacement;
 	[Export]
 	Node3D cameraTilt;
+	[Export]
+	Node3D cameraZoom;
 
 
 	private const float minCameraZoom = 15.0f;
@@ -21,13 +23,13 @@ public partial class CameraNode : Node3D
 	private float cameraDisplacementValue = 5f;
 	private float cameraTiltValue = Mathf.DegToRad(-70);
 
-	Node3D cameraZoom;
+	//Node3D cameraZoom;
 
 	List<Player> availablePlayers;
 
     public override void _Ready()
     {
-		cameraZoom = GetNode<Node3D>("CameraDisplacement/CameraTilt/CameraZoom");
+		//cameraZoom = GetNode<Node3D>("CameraDisplacement/CameraTilt/CameraZoom");
 		cameraDisplacement.Position = new Vector3(0f, 0f, cameraDisplacementValue);
 		cameraTilt.Rotation = new Vector3(cameraTiltValue, 0f, 0f);
     }
@@ -90,7 +92,7 @@ public partial class CameraNode : Node3D
 		float positionX = (leftmost + rightmost) * 0.5f;
 		float positionZ = (closest + furthest) * 0.5f;
 
-		GlobalPosition = new Vector3(positionX, cameraHeight, positionZ);
+		GlobalPosition = new Vector3(positionX, 0f, positionZ);
 
 
 		// Camera zoom
