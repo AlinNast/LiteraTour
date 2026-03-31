@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dywndqyk8e3rt"]
+
+[ext_resource type="Script" uid="uid://cavifimy0jtid" path="res://scripts/FlameGround.cs" id="1_bfc84"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfc84"]
+albedo_color = Color(0.99999994, 0, 0.0062687416, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fedlh"]
+material = SubResource("StandardMaterial3D_bfc84")
+top_radius = 5.0
+bottom_radius = 5.0
+height = 0.01
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jyv1q"]
+height = 0.01
+radius = 0.9916992
+
+[node name="FlameGround" type="Node3D" unique_id=2100863866]
+script = ExtResource("1_bfc84")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1748248987]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1787683862]
+mesh = SubResource("CylinderMesh_fedlh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1994706706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0044896603, 0)
+shape = SubResource("CylinderShape3D_jyv1q")

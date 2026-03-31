@@ -92,7 +92,7 @@ public partial class Player : CharacterBody3D
 		audioPlayer.Play();
 
 		var bullet = BulletScene.Instantiate<Node3D>();
-		GetTree().CurrentScene.AddChild(bullet);
+		AddSibling(bullet);
 		
 		bullet.GlobalPosition = gunPoint.GlobalPosition;
 		bullet.GlobalRotation = GlobalRotation;

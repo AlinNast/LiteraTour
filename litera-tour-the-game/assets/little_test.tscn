@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://br4jsi7f2iv3l"]
+
+[ext_resource type="Script" uid="uid://b0gbq6fwr2epl" path="res://scripts/PrototypeCrate.cs" id="1_bu1fi"]
+[ext_resource type="PackedScene" uid="uid://bhff8gp8fyljy" path="res://assets/fking_broke.tscn" id="2_gdksm"]
+[ext_resource type="PackedScene" uid="uid://dywndqyk8e3rt" path="res://assets/flame_ground.tscn" id="3_r2577"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bu1fi"]
+bottom_radius = 0.42
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gdksm"]
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hh180"]
+top_radius = 0.3
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xjisx"]
+height = 0.99780273
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5rdvy"]
+height = 4.015869
+
+[node name="BoomBarrel" type="RigidBody3D" unique_id=506380167]
+script = ExtResource("1_bu1fi")
+BrokenModel = ExtResource("2_gdksm")
+GroundEffects = ExtResource("3_r2577")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=120656648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049687028, 0)
+mesh = SubResource("CylinderMesh_bu1fi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=566694765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30045286, 0)
+mesh = SubResource("CylinderMesh_gdksm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=163548162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64976263, 0)
+mesh = SubResource("CylinderMesh_hh180")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1919219224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29797363, 0)
+shape = SubResource("CylinderShape3D_xjisx")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=912872271]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1309559963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8028564, 0)
+shape = SubResource("CylinderShape3D_5rdvy")
+
+[connection signal="area_entered" from="Area3D" to="." method="OnAreaEntered"]

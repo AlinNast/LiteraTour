@@ -3,6 +3,7 @@ using Godot;
 public partial class PrototypeCrate : RigidBody3D
 {
     [Export] public PackedScene BrokenModel;
+    [Export] public PackedScene GroundEffects;
 
     private void Break()
     {
@@ -12,6 +13,10 @@ public partial class PrototypeCrate : RigidBody3D
         Node3D brokenModelInstantiate = BrokenModel.Instantiate<Node3D>();
         GetParent().AddChild(brokenModelInstantiate);
         brokenModelInstantiate.Transform = this.Transform;
+
+        Node3D GroundEff = GroundEffects.Instantiate<Node3D>();
+        GetParent().AddChild(GroundEff);
+        GroundEff.Transform = this.Transform;
 
         QueueFree();
     }
