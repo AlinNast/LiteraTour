@@ -15,6 +15,10 @@ run/main_scene="uid://dx35wjiatjt67"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameEvents="*uid://cbig6qth7o71j"
+
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
@@ -60,6 +64,13 @@ shoot={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Floor"
+3d_physics/layer_2="Players"
+3d_physics/layer_3="Enemies"
+3d_physics/layer_4="Ragdoll"
 
 [physics]
 

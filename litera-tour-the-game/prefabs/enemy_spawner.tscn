@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cil7dg5l4f2nw"]
+
+[ext_resource type="Script" uid="uid://d11h276fa0mwv" path="res://scripts/EnemySpawner.cs" id="1_ksrlw"]
+
+[node name="EnemySpawner" type="Node3D" unique_id=1323560826 node_paths=PackedStringArray("Pool")]
+script = ExtResource("1_ksrlw")
+Pool = NodePath("")

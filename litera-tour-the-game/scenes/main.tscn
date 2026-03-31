@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://prefabs/player.tscn" id="1_iovii"]
 [ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://prefabs/prototype_crate.tscn" id="2_dgmo7"]
-[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://prefabs/enemy.tscn" id="3_8kgs6"]
+[ext_resource type="PackedScene" uid="uid://cil7dg5l4f2nw" path="res://prefabs/enemy_spawner.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cr3ylqrk05wqk" path="res://prefabs/enemy_pool.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_le1cq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,19 +33,12 @@ shadow_enabled = true
 
 [node name="ground" type="CSGBox3D" parent="Level" unique_id=2055532075]
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(40, 0.2, 40)
 
 [node name="Player" parent="Level" unique_id=763983896 instance=ExtResource("1_iovii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 1.1, -9.1)
-
-[node name="Player2" parent="Level" unique_id=683390202 instance=ExtResource("1_iovii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 1.1, 2.4000003)
-
-[node name="Player3" parent="Level" unique_id=68275600 instance=ExtResource("1_iovii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 2.3)
-
-[node name="Player4" parent="Level" unique_id=1778575344 instance=ExtResource("1_iovii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1000001, 9.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4339042, 1.1, 10.475472)
 
 [node name="Crates" type="Node3D" parent="Level" unique_id=1976589922]
 
@@ -144,65 +138,23 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.
 [node name="PrototypeCrate24" parent="Level/Crates" unique_id=917749224 instance=ExtResource("2_dgmo7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.050002, 2.8, 4.5)
 
-[node name="Enemy" parent="Level" unique_id=1226634607 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.200001, 1.1, -4)
-
-[node name="Enemy2" parent="Level" unique_id=1316601751 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000006, 1.1, -4)
-
-[node name="Enemy3" parent="Level" unique_id=177182160 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5000005, 1.1, -4)
-
-[node name="Enemy4" parent="Level" unique_id=1940042576 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 1.1, -4)
-
-[node name="Enemy5" parent="Level" unique_id=1296662802 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3999996, 1.1, -4)
-
-[node name="Enemy6" parent="Level" unique_id=1489441800 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.1, -4)
-
-[node name="Enemy7" parent="Level" unique_id=1805374529 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 1.1, -4)
-
-[node name="Enemy8" parent="Level" unique_id=1503216855 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 1.1, -4)
-
-[node name="Enemy9" parent="Level" unique_id=1663710929 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 1.1, -4)
-
-[node name="Enemy10" parent="Level" unique_id=1647440258 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 1.1, -4)
-
-[node name="Enemy11" parent="Level" unique_id=2019374510 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.200001, 1.1, 14.200001)
-
-[node name="Enemy12" parent="Level" unique_id=1640744139 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000006, 1.1, 14.200001)
-
-[node name="Enemy13" parent="Level" unique_id=1860812861 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5000005, 1.1, 14.200001)
-
-[node name="Enemy14" parent="Level" unique_id=1684209678 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 1.1, 14.200001)
-
-[node name="Enemy15" parent="Level" unique_id=756444871 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3999996, 1.1, 14.200001)
-
-[node name="Enemy16" parent="Level" unique_id=380244431 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.1, 14.200001)
-
-[node name="Enemy17" parent="Level" unique_id=1283590206 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 1.1, 14.200001)
-
-[node name="Enemy18" parent="Level" unique_id=927697340 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 1.1, 14.200001)
-
-[node name="Enemy19" parent="Level" unique_id=256021245 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 1.1, 14.200001)
-
-[node name="Enemy20" parent="Level" unique_id=629307248 instance=ExtResource("3_8kgs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 1.1, 14.200001)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1065496213]
 transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 10.117616, 9.2, 12.8)
+
+[node name="EnemySpawner" parent="." unique_id=1323560826 node_paths=PackedStringArray("Pool", "SpawnPointsParent") instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+Pool = NodePath("EnemyPool")
+SpawnPointsParent = NodePath("SpawnerPoints")
+
+[node name="EnemyPool" parent="EnemySpawner" unique_id=1767619218 instance=ExtResource("4_jyhfs")]
+
+[node name="SpawnerPoints" type="Node3D" parent="EnemySpawner" unique_id=1381340794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="P1" type="Node3D" parent="EnemySpawner/SpawnerPoints" unique_id=1291771385]
+
+[node name="P2" type="Node3D" parent="EnemySpawner/SpawnerPoints" unique_id=1617901726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+
+[node name="P3" type="Node3D" parent="EnemySpawner/SpawnerPoints" unique_id=1061566549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)

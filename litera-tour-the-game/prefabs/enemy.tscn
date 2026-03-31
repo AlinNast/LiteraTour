@@ -16,7 +16,12 @@ size = Vector3(0.6, 0.2, 0.4)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sle4t"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfjof"]
+size = Vector3(1.6, 1, 1)
+
 [node name="Enemy" type="CharacterBody3D" unique_id=1226634607]
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_6n8dw")
 BrokenModel = ExtResource("2_1me52")
 
@@ -34,5 +39,11 @@ shape = SubResource("CapsuleShape3D_g7n0o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=1089596695]
 shape = SubResource("CapsuleShape3D_sle4t")
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=2087166316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0857427)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=1458398511]
+shape = SubResource("BoxShape3D_yfjof")
 
 [connection signal="area_entered" from="HitBox" to="." method="OnHitBoxAreaEntered"]

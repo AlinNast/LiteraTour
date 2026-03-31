@@ -8,6 +8,7 @@ public partial class Player : CharacterBody3D
 	[Export] public PackedScene BulletScene;
 
 	private Marker3D gunPoint;
+	private Vector3 lastPosition;
 
     public override void _Ready()
     {
@@ -18,8 +19,16 @@ public partial class Player : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         HandleMovement(delta);
+
+		if (GlobalPosition != lastPosition)
+		{
+			GameEvents.Instance.NotifyPlayerMoved(this);
+			lastPosition = GlobalPosition;
+		}
+		
 		HandleAiming(delta);
 		HandleShooting(delta);
+		HandlePlayerDead(delta);
     }
 	/// <summary>
 	/// handle player movement
@@ -78,7 +87,7 @@ public partial class Player : CharacterBody3D
 
 	private void RotateToward(Vector3 direction, double delta)
 	{
-		Vector3 target = GlobalPosition + direction;
+		//Vector3 target = GlobalPosition + direction;
 		Vector3 current = GlobalTransform.Basis.Z * -1f;
 
 		Vector3 newDirection = current.Lerp(direction, (float)(RotationSpeed * delta)).Normalized();
@@ -102,19 +111,13 @@ public partial class Player : CharacterBody3D
 		bullet.GlobalPosition = gunPoint.GlobalPosition;
 		bullet.GlobalRotation = GlobalRotation;
         bullet.LookAt(bullet.GlobalPosition + -GlobalTransform.Basis.Z, Vector3.Up);
+
+		// Notify game event when shooting
+		GameEvents.Instance.NotifyPlayerShoot(this);
 	}
 
-
-
-
-	/// <summary>
-	/// test
-	/// </summary>
-	/// <returns></returns>
-	private bool asssa()
+	private void HandlePlayerDead(double delta)
 	{
-		return true;
+		GameEvents.Instance.NotifyPlayerDied(this);
 	}
-
-
 }

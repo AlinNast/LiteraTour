@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cr3ylqrk05wqk"]
+
+[ext_resource type="Script" uid="uid://gymj4t726hx2" path="res://scripts/EnemyPool.cs" id="1_re6h6"]
+[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://prefabs/enemy.tscn" id="2_3y55x"]
+
+[node name="EnemyPool" type="Node3D" unique_id=1767619218]
+script = ExtResource("1_re6h6")
+EnemyScene = ExtResource("2_3y55x")
