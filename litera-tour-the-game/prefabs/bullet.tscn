@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmbdjp2a5jr0l"]
 
-[ext_resource type="Script" path="res://scripts/Bullet.cs" id="1_fh0yl"]
+[ext_resource type="Script" uid="uid://c1da5jhghjaok" path="res://scripts/Bullet.cs" id="1_fh0yl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_clvi6"]
 size = Vector3(0.1, 0.1, 0.4)
@@ -15,6 +15,7 @@ script = ExtResource("1_fh0yl")
 mesh = SubResource("BoxMesh_clvi6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=877525938]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 shape = SubResource("BoxShape3D_wae5g")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

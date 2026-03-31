@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c4hhals5bjmlm" path="res://addons/kenney_prototype_textures/green/texture_12.png" id="2_1qf6k"]
 [ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://prefabs/player.tscn" id="2_k8myw"]
 [ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://prefabs/enemy.tscn" id="3_r0nut"]
-[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://prefabs/Breakable_area.tscn" id="4_valg5"]
+[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://prefabs/Breakable_area_to_rename.tscn" id="4_valg5"]
 [ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://prefabs/prototype_crate.tscn" id="5_5adhy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k8myw"]
