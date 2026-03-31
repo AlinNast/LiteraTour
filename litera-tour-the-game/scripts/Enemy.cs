@@ -60,7 +60,6 @@ public partial class Enemy : CharacterBody3D
 		
 		// Choose closet player.
 		float closestDistance = float.MaxValue;
-
 		foreach (Node node in players)
 		{
 			if (node is Player player)
