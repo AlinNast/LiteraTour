@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.ComponentModel;
+using System.Xml;
 
 public partial class Player : CharacterBody3D
 {
@@ -12,6 +14,9 @@ public partial class Player : CharacterBody3D
 	public string moveUp = "move_forward";
 	public string moveDown = "move_backward";
 
+	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-gunshot-01.wav");
+	AudioStreamPlayer3D audioPlayer = new AudioStreamPlayer3D();
+
 
 
 
@@ -19,6 +24,8 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready()
     {
+		AddChild(audioPlayer);
+
 		AddToGroup("players");
         gunPoint = GetNode<Marker3D>("GunPoint");
     }
@@ -80,6 +87,9 @@ public partial class Player : CharacterBody3D
 			return;
 		
 		shootTimer = shootCooldown;
+
+		audioPlayer.SetStream(shootSound);
+		audioPlayer.Play();
 
 		var bullet = BulletScene.Instantiate<Node3D>();
 		GetTree().CurrentScene.AddChild(bullet);
