@@ -33,7 +33,7 @@ public partial class PlayerSelectionScreen : Control
 		// go back to main manu on press B
 		if( Input.IsActionJustPressed("MenuPressBack") )
 		{
-			GetTree().ChangeSceneToFile("Scenes/MainMenu.tscn");
+			GetTree().ChangeSceneToFile("uid://0586eog26yyw");
 		}
 
 		// navigate through the buttons with the arrow keys

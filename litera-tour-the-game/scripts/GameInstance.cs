@@ -27,12 +27,16 @@ public partial class GameInstance
 
 
 
+	// Players
 	private int numberOfPlayers = 2;
+	private List<Player> availablePlayers = new List<Player>();
 
 
 
 
-	// private List<Player> availablePlayers = new List<Player>();
+
+
+
     private static GameInstance gameInstance = null;
 
     private GameInstance()
@@ -75,6 +79,7 @@ public partial class GameInstance
 		{
 			// Player player = new Player();
 			// availablePlayers.Add(player);
+			
 		}
 	}
 

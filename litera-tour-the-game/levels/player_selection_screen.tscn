@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6vwh6i4tbrkc"]
 
 [ext_resource type="Script" uid="uid://iw01rnj4ijvy" path="res://scripts/PlayerSelectionScreen.cs" id="1_hvp63"]
-[ext_resource type="Texture2D" uid="uid://dhn1aawiw032q" path="res://Textures/icon.svg" id="1_t8fup"]
+[ext_resource type="Texture2D" uid="uid://dhn1aawiw032q" path="res://icon.svg" id="1_t8fup"]
 [ext_resource type="Texture2D" uid="uid://cfkhxotrbu1c1" path="res://Textures/xbox_button_color_a.png" id="3_rx65j"]
 [ext_resource type="Texture2D" uid="uid://72uafy37rqq3" path="res://Textures/xbox_button_color_b.png" id="4_rx65j"]
 
