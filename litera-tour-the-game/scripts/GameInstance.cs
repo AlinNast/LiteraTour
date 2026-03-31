@@ -13,7 +13,7 @@ public partial class GameInstance
 	// ** TEMPORARY **
 
 
-    public List<string> levelList = ["uid://b12vb63dc5058"];
+	//LevelManager levelManager = (LevelManager)Godot.Engine.GetSingleton("LevelManager");
 
 
 	// ** TEMPORARY **
@@ -27,10 +27,8 @@ public partial class GameInstance
 
 
 
-
-	// Players
-	private int numberOfPlayers = 2;
-	private List<Player> availablePlayers = new List<Player>();
+	// // Players
+	// private int numberOfPlayers = 2;
 
 
 
@@ -38,50 +36,34 @@ public partial class GameInstance
 
 
 
-    private static GameInstance gameInstance = null;
 
-    private GameInstance()
-    {
-    }
+    // private static GameInstance gameInstance = null;
 
-    public static GameInstance Instance
-    {
-        get
-        {
-            if (gameInstance == null)
-            {
-                gameInstance = new GameInstance();
-            }
-            return gameInstance;
-        }
-    }
+    // private GameInstance()
+    // {
+    // }
 
-
-
-	public void StartGame(int numberOfPlayers)
-	{
-		this.numberOfPlayers = numberOfPlayers;
-		SpawnRandomLevel();
-		GD.Print("Level initialized with " + numberOfPlayers);
-	}
+    // public static GameInstance Instance
+    // {
+    //     get
+    //     {
+    //         if (gameInstance == null)
+    //         {
+    //             gameInstance = new GameInstance();
+    //         }
+    //         return gameInstance;
+    //     }
+    // }
 
 
 
-	private void SpawnRandomLevel()
-	{
-		InitializePlayers();
-		//mainLevel.InitializeLevel(availablePlayers);
-	}
+	// public void StartGame(int numberOfPlayers)
+	// {
+	// 	this.numberOfPlayers = numberOfPlayers;
+	// 	//levelManager.StartFirstLevel(numberOfPlayers);
 
-	private void InitializePlayers()
-	{
-		//availablePlayers.Capacity = numberOfPlayers;
-		for(int i = 0; i < numberOfPlayers; i++)
-		{
-			// Player player = new Player();
-			// availablePlayers.Add(player);
-			
-		}
-	}
+	// }
+
+
 
 }

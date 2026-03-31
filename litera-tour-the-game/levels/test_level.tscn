@@ -3,10 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://b2xgvknoh2nak" path="res://addons/kenney_prototype_textures/green/texture_13.png" id="1_qn3v4"]
 [ext_resource type="PackedScene" uid="uid://b5llkcx0oo0m7" path="res://environment/platform.tscn" id="1_rex8v"]
 [ext_resource type="Texture2D" uid="uid://c4hhals5bjmlm" path="res://addons/kenney_prototype_textures/green/texture_12.png" id="2_1qf6k"]
-[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://prefabs/player.tscn" id="2_k8myw"]
-[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://prefabs/enemy.tscn" id="3_r0nut"]
-[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://prefabs/Breakable_area_to_rename.tscn" id="4_valg5"]
-[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://prefabs/prototype_crate.tscn" id="5_5adhy"]
+[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://characters/enemy.tscn" id="3_r0nut"]
+[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://assets/Breakable_area_to_rename.tscn" id="4_valg5"]
+[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://assets/prototype_crate.tscn" id="5_5adhy"]
 [ext_resource type="Texture2D" uid="uid://knakdlkrq2xf" path="res://addons/kenney_prototype_textures/red/texture_13.png" id="8_1qf6k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k8myw"]
@@ -488,9 +487,6 @@ shape = SubResource("ConcavePolygonShape3D_f4jyt")
 
 [node name="Platform" parent="." unique_id=1817988188 instance=ExtResource("1_rex8v")]
 transform = Transform3D(0.6922943, 0, 0.72161525, 0, 1, 0, -0.72161525, 0, 0.6922943, 49.110046, 1, 33.339535)
-
-[node name="Player" parent="." unique_id=763983896 instance=ExtResource("2_k8myw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.652714, 0.99999905, -0.45422173)
 
 [node name="Enemy" parent="." unique_id=1226634607 instance=ExtResource("3_r0nut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.781193, 1, 24.455538)
