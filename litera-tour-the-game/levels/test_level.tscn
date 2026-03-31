@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://b12vb63dc5058"]
 
-[ext_resource type="Script" uid="uid://blnr7kwqcyxs0" path="res://scenes/TestLevel.cs" id="1_1qf6k"]
 [ext_resource type="Texture2D" uid="uid://b2xgvknoh2nak" path="res://addons/kenney_prototype_textures/green/texture_13.png" id="1_qn3v4"]
-[ext_resource type="PackedScene" uid="uid://b5llkcx0oo0m7" path="res://prefabs/platform.tscn" id="1_rex8v"]
+[ext_resource type="PackedScene" uid="uid://b5llkcx0oo0m7" path="res://environment/platform.tscn" id="1_rex8v"]
 [ext_resource type="Texture2D" uid="uid://c4hhals5bjmlm" path="res://addons/kenney_prototype_textures/green/texture_12.png" id="2_1qf6k"]
-[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://prefabs/player.tscn" id="2_k8myw"]
-[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://prefabs/enemy.tscn" id="3_r0nut"]
-[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://prefabs/Breakable_area_to_rename.tscn" id="4_valg5"]
-[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://prefabs/prototype_crate.tscn" id="5_5adhy"]
+[ext_resource type="PackedScene" uid="uid://c603fi583baqe" path="res://characters/player.tscn" id="2_k8myw"]
+[ext_resource type="PackedScene" uid="uid://4tvtk801gjua" path="res://characters/enemy.tscn" id="3_r0nut"]
+[ext_resource type="PackedScene" uid="uid://q3qp7dt1m05s" path="res://assets/Breakable_area_to_rename.tscn" id="4_valg5"]
+[ext_resource type="PackedScene" uid="uid://cb2hfcggnvw3j" path="res://assets/prototype_crate.tscn" id="5_5adhy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k8myw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -106,7 +105,6 @@ left_to_right = 0.1
 data = PackedVector3Array(-0.39999998, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.39999998, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.39999998, 0.5, 0.5, -0.39999998, 0.5, -0.5, 0.5, -0.5, 0.5, -0.39999998, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.39999998, 0.5, -0.5, -0.39999998, 0.5, 0.5, -0.5, -0.5, -0.5, -0.39999998, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="TestLevel" type="Node3D" unique_id=1907707759]
-script = ExtResource("1_1qf6k")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643071511]
 environment = SubResource("Environment_valg5")

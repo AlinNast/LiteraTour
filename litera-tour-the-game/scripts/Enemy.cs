@@ -122,7 +122,6 @@ public partial class Enemy : CharacterBody3D
 	{
 		if (area is Bullet bullet)
 		{
-			bullet.QueueFree();
 			TakeDamage(bullet.Damage);
 		}
 	}

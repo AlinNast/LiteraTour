@@ -24,9 +24,6 @@ public partial class Bullet : Area3D
 
     private void OnBodyEntered(Node3D body)
     {
-        if (body.HasMethod("TakeDamage"))
-            body.Call("TakeDamage", Damage);
-        
         QueueFree();
     }
 
