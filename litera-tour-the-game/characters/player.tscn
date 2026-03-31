@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c603fi583baqe"]
 
-[ext_resource type="Script" path="res://scripts/Player.cs" id="1_72ieh"]
-[ext_resource type="PackedScene" uid="uid://cmbdjp2a5jr0l" path="res://prefabs/bullet.tscn" id="2_4dohe"]
+[ext_resource type="Script" uid="uid://dufvc66adg8bn" path="res://scripts/Player.cs" id="1_72ieh"]
+[ext_resource type="PackedScene" uid="uid://cmbdjp2a5jr0l" path="res://assets/bullet.tscn" id="2_4dohe"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yjvhs"]
 
@@ -11,6 +11,7 @@ size = Vector3(0.6, 0.4, 0.2)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjvhs"]
 
 [node name="Player" type="CharacterBody3D" unique_id=763983896]
+collision_mask = 129
 script = ExtResource("1_72ieh")
 BulletScene = ExtResource("2_4dohe")
 

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bdxqld3fhk1qo"]
 
 [ext_resource type="Script" uid="uid://cv3tvgkd2r42c" path="res://scripts/CameraNode.cs" id="1_068bb"]
-[ext_resource type="PackedScene" uid="uid://xe8k6ex77s4w" path="res://scenes/camera_bound_wall.tscn" id="2_wtskt"]
+[ext_resource type="PackedScene" uid="uid://xe8k6ex77s4w" path="res://assets/camera_bound_wall.tscn" id="2_wtskt"]
 
-[node name="CameraNode" type="Node3D" unique_id=1422608012]
+[node name="CameraNode" type="Node3D" unique_id=1422608012 node_paths=PackedStringArray("cameraDisplacement", "cameraTilt")]
 script = ExtResource("1_068bb")
+cameraDisplacement = NodePath("CameraDisplacement")
+cameraTilt = NodePath("CameraDisplacement/CameraTilt")
 
 [node name="CameraDisplacement" type="Node3D" parent="." unique_id=380061132]
 

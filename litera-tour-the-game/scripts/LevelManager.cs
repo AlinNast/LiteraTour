@@ -13,11 +13,15 @@ public partial class LevelManager : Node
     }
 
 
-
     public List<string> levelList = ["uid://b12vb63dc5058"];
+	List<Player> currentPlayers = new List<Player>();
+
 
 	PackedScene playerScene = GD.Load<PackedScene>("uid://c603fi583baqe");
-	List<Player> currentPlayers = new List<Player>();
+	PackedScene cameraScene = GD.Load<PackedScene>("uid://bdxqld3fhk1qo");
+
+
+
 
 
 
@@ -40,6 +44,7 @@ public partial class LevelManager : Node
 
 
 		SpawnPlayers();
+		SpawnCamera();
 	}
 
 
@@ -53,8 +58,17 @@ public partial class LevelManager : Node
 		{
 			currentPlayers[i].Position = new Vector3(0f, 1f, (float)i);
 		}
+	}
 
+	private void SpawnCamera()
+	{
+		
+		PackedScene cameraScene = GD.Load<PackedScene>("uid://bdxqld3fhk1qo");
+		CameraNode camera = cameraScene.Instantiate() as CameraNode;
+		camera.InitializeCamera(currentPlayers);
+		AddChild(camera);
 
+		
 	}
 
 
