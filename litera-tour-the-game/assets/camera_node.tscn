@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdxqld3fhk1qo"]
+
+[ext_resource type="Script" uid="uid://cv3tvgkd2r42c" path="res://scripts/CameraNode.cs" id="1_068bb"]
+[ext_resource type="PackedScene" uid="uid://xe8k6ex77s4w" path="res://assets/camera_bound_wall.tscn" id="2_wtskt"]
+
+[node name="CameraNode" type="Node3D" unique_id=1422608012 node_paths=PackedStringArray("cameraDisplacement", "cameraTilt", "cameraZoom")]
+script = ExtResource("1_068bb")
+cameraDisplacement = NodePath("CameraDisplacement")
+cameraTilt = NodePath("CameraDisplacement/CameraTilt")
+cameraZoom = NodePath("CameraDisplacement/CameraTilt/CameraZoom")
+
+[node name="CameraDisplacement" type="Node3D" parent="." unique_id=380061132]
+
+[node name="CameraTilt" type="Node3D" parent="CameraDisplacement" unique_id=250370352]
+
+[node name="CameraZoom" type="Node3D" parent="CameraDisplacement/CameraTilt" unique_id=1484744853]
+
+[node name="Camera3D" type="Camera3D" parent="CameraDisplacement/CameraTilt/CameraZoom" unique_id=1565573958]
+
+[node name="CameraBoundWall" parent="." unique_id=977766042 instance=ExtResource("2_wtskt")]

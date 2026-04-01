@@ -1,0 +1,73 @@
+[gd_scene format=4 uid="uid://cb2hfcggnvw3j"]
+
+[ext_resource type="Script" uid="uid://b0gbq6fwr2epl" path="res://scripts/PrototypeCrate.cs" id="1_ss56o"]
+[ext_resource type="PackedScene" uid="uid://dlpmhw1usybki" path="res://environment/props/prototype_crate_pieces.tscn" id="2_hbksf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ah6r4"]
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ah6r4"]
+size = Vector3(1.6, 1.6, 1.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mi8qm"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.49581075, 0.30719385, 0.07357605, 1)
+roughness = 0.8
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h6mua"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a2ved"]
+resource_name = "PrototypeCrate_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_mi8qm"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h6mua")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbksf"]
+size = Vector3(1.6, 1.6, 1.6)
+
+[node name="PrototypeCrate" type="RigidBody3D" unique_id=1293245780]
+collision_layer = 7
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_ah6r4")
+can_sleep = false
+script = ExtResource("1_ss56o")
+BrokenModel = ExtResource("2_hbksf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1907137940]
+shape = SubResource("BoxShape3D_ah6r4")
+
+[node name="crate_mesh" type="MeshInstance3D" parent="." unique_id=1908412919]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("ArrayMesh_a2ved")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=275316038]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1080157321]
+shape = SubResource("BoxShape3D_hbksf")
+
+[connection signal="area_entered" from="Area3D" to="." method="OnAreaEntered"]

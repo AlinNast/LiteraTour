@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bhff8gp8fyljy"]
+
+[ext_resource type="Script" uid="uid://r6nga4i26sxi" path="res://scripts/PrototypeCratePieces.cs" id="1_c7dn0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bu1fi"]
+bottom_radius = 0.42
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dddm2"]
+height = 0.29907227
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gdksm"]
+height = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_euv04"]
+height = 0.40368652
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hh180"]
+top_radius = 0.3
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sleqt"]
+height = 0.3066101
+
+[node name="FkingBroke" type="Node3D" unique_id=1912572823]
+script = ExtResource("1_c7dn0")
+intensity = 50.0
+clearTime = 3.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1215638171]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1421838555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049687028, 0)
+mesh = SubResource("CylinderMesh_bu1fi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=253863763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049194336, 0)
+shape = SubResource("CylinderShape3D_dddm2")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1402537826]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=424072871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30045286, 0)
+mesh = SubResource("CylinderMesh_gdksm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1452052038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29803467, 0)
+shape = SubResource("CylinderShape3D_euv04")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="." unique_id=420242190]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3" unique_id=405224778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64976263, 0)
+mesh = SubResource("CylinderMesh_hh180")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3" unique_id=1851712991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65434265, 0)
+shape = SubResource("CylinderShape3D_sleqt")
