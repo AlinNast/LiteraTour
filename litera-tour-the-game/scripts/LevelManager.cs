@@ -35,7 +35,7 @@ public partial class LevelManager : Node
 
 		AddChild(levelInstance);
 
-		SpawnEnemiesFromLevel(levelInstance);
+		//SpawnEnemiesFromLevel(levelInstance);
 
 
 		for (int i = 0; i < numberOfPlayers; i++)
@@ -73,69 +73,4 @@ public partial class LevelManager : Node
 
 		
 	}
-
-	/// <summary>
-	/// Spawn enemy using EnemySpawnData script from each level
-	/// </summary>
-	/// <param name="level"></param>
-	public void SpawnEnemiesFromLevel(Node3D level)
-	{
-		foreach (Node child in level.GetTree().GetNodesInGroup("enemy_spawn_data"))
-		{
-			if (child is EnemySpawnData enemySpawnData)
-			{
-				for (int i = 0; i < enemySpawnData.MaxActiveEnemies; i++)
-				{
-					Enemy enemy = enemySpawnData.EnemyType.Instantiate<Enemy>();
-					AddChild(enemy);
-
-					Vector3 offset = new Vector3(i * 1.5f, 0, 0);
-					enemy.GlobalPosition = enemySpawnData.SpawnPoint.GlobalPosition + offset;
-
-					enemySpawnData.ActiveEnemies++;
-					enemy.Died += (enemy) => OnEnemyDied(enemySpawnData);
-				}
-			}
-		}
-	}
-
-	/// <summary>
-	/// When enemy died check EnemySpawnData script for Respawn and MaxActiveEnemies amount
-	/// </summary>
-	/// <param name="enemySpawnData"></param>
-	private async void OnEnemyDied(EnemySpawnData enemySpawnData)
-	{
-		enemySpawnData.ActiveEnemies--;
-	
-		if (!enemySpawnData.RespawnEnemy)
-			return;
-
-		if (enemySpawnData.ActiveEnemies < enemySpawnData.MaxActiveEnemies)
-		{
-			await ToSignal(GetTree().CreateTimer(enemySpawnData.RespawnDelay), "timeout");
-			SpawnOneEnemy(enemySpawnData);
-		}
-	}
-
-
-	/// <summary>
-	/// Respwan 1 enemy instance when called base on EnemySpawnData script and check for TotalEnemySpawnLimit
-	/// </summary>
-	/// <param name="enemySpawnData"></param>
-	private void SpawnOneEnemy(EnemySpawnData enemySpawnData)
-	{
-		if (enemySpawnData.TotalEnemySpawnLimit != -1 && enemySpawnData.TotalEnemySpawned >= enemySpawnData.TotalEnemySpawnLimit)
-			return;
-		
-		enemySpawnData.TotalEnemySpawned++;
-
-		Enemy enemy = enemySpawnData.EnemyType.Instantiate<Enemy>();
-		AddChild(enemy);
-
-		enemy.GlobalPosition = enemySpawnData.SpawnPoint.GlobalPosition;
-		enemySpawnData.ActiveEnemies++;
-
-		enemy.Died += (enemy) => OnEnemyDied(enemySpawnData);
-	}
-
 }

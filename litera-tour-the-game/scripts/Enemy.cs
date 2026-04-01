@@ -162,17 +162,31 @@ public partial class Enemy : CharacterBody3D
 		if (targetPlayer == null)
 			return;
 
-
+		navigationAgent.TargetPosition = targetPlayer.GlobalPosition;
+		
 		// Apply gravity
 		Vector3 gravity = GetGravity();
 		Vector3 velocity = Velocity;
 		velocity += gravity * (float)delta;
 
-		Vector3 nextPosition = navigationAgent.GetNextPathPosition();
+		// Nav mesh only apply horizontal movement to avoid conflicting with gravity system
+		/*Vector3 nextPosition = navigationAgent.GetNextPathPosition();
 		Vector3 currentPosition = GlobalTransform.Origin;
 		Vector3 newVelocity = (nextPosition - currentPosition).Normalized() * MoveSpeed;
+		
+		velocity = velocity.MoveToward(newVelocity, 1);*/
 
-		velocity = velocity.MoveToward(newVelocity, 1);
+
+		// Nav mesh only apply horizontal movement to avoid conflicting with gravity system
+		Vector3 nextPosition = navigationAgent.GetNextPathPosition();
+		Vector3 direction = nextPosition - GlobalPosition;
+		direction.Y = 0; // no vertical movement as gravity will handle it
+
+		Vector3 horizontalVelocity = direction.Normalized() * MoveSpeed;
+
+		// Nav movement
+		velocity.X = horizontalVelocity.X;
+		velocity.Z = horizontalVelocity.Z;
 
 		SmoothLookAt(targetPlayer.Position, LookRotateSpeed * (float)delta);
 
