@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://mkh1c3xuyl7m"]
 
-[ext_resource type="Script" uid="uid://dwv2adlqorbm3" path="res://Bullet.cs" id="1_ayd6b"]
+[ext_resource type="Script" uid="uid://c1da5jhghjaok" path="res://scripts/Bullet.cs" id="1_1en4c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ayd6b"]
-radius = 2.0229492
-height = 5.869385
+radius = 5.8339844
+height = 17.130676
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayd6b"]
 albedo_color = Color(0.73333335, 0.54509807, 0.22352941, 1)
@@ -19,16 +19,18 @@ albedo_color = Color(0.73268694, 0.5435626, 0.22239968, 1)
 material = SubResource("StandardMaterial3D_4s4u5")
 
 [node name="Bullet" type="Area3D" unique_id=52620366]
-script = ExtResource("1_ayd6b")
+script = ExtResource("1_1en4c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=200381170]
-transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, -1.7448274e-09, 0.039916992)
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 2.757774e-09, -0.063090526)
 shape = SubResource("CapsuleShape3D_ayd6b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=131297172]
-transform = Transform3D(0.1951205, 0, 0, 0, -3.5702108e-09, -0.18264268, 0, 0.0816769, -7.983566e-09, 0, 0, -0.017990083)
+transform = Transform3D(0.505, 0, 0, 0, -1.25451685e-08, -0.533, 0, 0.287, -2.329817e-08, 0, 0, -0.15155502)
 mesh = SubResource("CapsuleMesh_4s4u5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=443892779]
-transform = Transform3D(0.19512047, 7.140423e-09, -6.979455e-16, 0, -3.5702112e-09, -0.18264268, -1.7057976e-08, 0.08167691, -7.983566e-09, 0, 0, 0.052522555)
+transform = Transform3D(0.505, 2.509034e-08, -2.0367909e-15, 0, -1.25451685e-08, -0.533, -4.414851e-08, 0.287, -2.329817e-08, 0, 0, 0.052522555)
 mesh = SubResource("CylinderMesh_7281b")
+
+[connection signal="area_entered" from="." to="." method="OnBodyEntered"]

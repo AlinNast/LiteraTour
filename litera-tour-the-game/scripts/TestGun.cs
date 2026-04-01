@@ -76,4 +76,9 @@ public partial class TestGun : Node3D
 		newBullet.speed = bulletSpeed; // Set speed
 		GetTree().Root.AddChild(newBullet); // Add to world
 	}
+
+	public void removeWeapon()
+	{
+		QueueFree();
+	}
 }

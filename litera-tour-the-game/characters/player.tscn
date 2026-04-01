@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btvty4450th8k" path="res://scripts/Player.cs" id="1_72ieh"]
 [ext_resource type="PackedScene" uid="uid://cmbdjp2a5jr0l" path="res://assets/bullet.tscn" id="2_4dohe"]
+[ext_resource type="PackedScene" uid="uid://dw71pp0iddg0" path="res://models/Smg.tscn" id="3_tory2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yjvhs"]
 
@@ -80,5 +81,8 @@ shape = SubResource("CapsuleShape3D_3eadt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1797256192]
 libraries/ = SubResource("AnimationLibrary_x0jl3")
+
+[node name="Smg" parent="." unique_id=1906586538 instance=ExtResource("3_tory2")]
+transform = Transform3D(0.13092808, -0.07319723, 0, 0.07319723, 0.13092808, 0, 0, 0, 0.14999999, 0.64398944, 1.1998782, -0.26535633)
 
 [connection signal="area_entered" from="HitBox" to="." method="OnHitBoxAreaEntered"]

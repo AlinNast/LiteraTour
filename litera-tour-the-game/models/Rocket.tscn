@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl0hu4a7kn0ke"]
 
-[ext_resource type="Script" uid="uid://dwv2adlqorbm3" path="res://Bullet.cs" id="1_al867"]
+[ext_resource type="Script" uid="uid://c1da5jhghjaok" path="res://scripts/Bullet.cs" id="1_0342g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j0y6u"]
 height = 6.0061035
@@ -10,10 +10,11 @@ albedo_color = Color(0.40138838, 0.46031916, 0.25657746, 1)
 
 [node name="Rocket" type="Area3D" unique_id=615799267]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
-script = ExtResource("1_al867")
+script = ExtResource("1_0342g")
+Damage = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1248898791]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.9054369e-08, -0.4359131)
+transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 1.9054369e-08, 1.1051836)
 shape = SubResource("CapsuleShape3D_j0y6u")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1635049704]
@@ -49,3 +50,5 @@ material = SubResource("StandardMaterial3D_j0y6u")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.9618037)
 cone = true
 material = SubResource("StandardMaterial3D_j0y6u")
+
+[connection signal="area_entered" from="." to="." method="OnBodyEntered"]

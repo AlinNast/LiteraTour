@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://l5msl3bnrn63"]
 
-[ext_resource type="PackedScene" uid="uid://62ptjpc3keny" path="res://RPG.tscn" id="2_5yvoe"]
-[ext_resource type="PackedScene" uid="uid://cop3jkmd6j6c5" path="res://Pistol.tscn" id="3_6i505"]
-[ext_resource type="PackedScene" uid="uid://dw71pp0iddg0" path="res://Smg.tscn" id="3_tmdbc"]
-[ext_resource type="PackedScene" uid="uid://bl0hu4a7kn0ke" path="res://Rocket.tscn" id="3_ts0dp"]
-[ext_resource type="PackedScene" uid="uid://drwr78wm8yqtb" path="res://AK.tscn" id="4_cb14c"]
-[ext_resource type="PackedScene" uid="uid://tssk5blrkd7v" path="res://BulletBig.tscn" id="5_cb14c"]
+[ext_resource type="PackedScene" uid="uid://62ptjpc3keny" path="res://models/RPG.tscn" id="2_5yvoe"]
+[ext_resource type="PackedScene" uid="uid://cop3jkmd6j6c5" path="res://models/Pistol.tscn" id="3_6i505"]
+[ext_resource type="PackedScene" uid="uid://dw71pp0iddg0" path="res://models/Smg.tscn" id="3_tmdbc"]
+[ext_resource type="PackedScene" uid="uid://drwr78wm8yqtb" path="res://models/AK.tscn" id="4_cb14c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v6c45"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -64,7 +62,7 @@ size = Vector3(1.6601563, 39.795776, 0.029693604)
 material = SubResource("StandardMaterial3D_v6c45")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2009809052]
-transform = Transform3D(1, 0, 0, 0, 0.9867001, 0.16255106, 0, -0.16255106, 0.9867001, -5.4884686, 1.8561525, 0.50736475)
+transform = Transform3D(1, 0, 0, 0, 0.9867001, 0.16255106, 0, -0.16255106, 0.9867001, -3.112568, 9.37232, 6.5778465)
 fov = 90.0
 
 [node name="Player3" type="Node3D" parent="." unique_id=1625573842]
@@ -79,25 +77,15 @@ mesh = SubResource("CapsuleMesh_v6c45")
 transform = Transform3D(0.7865144, 0, 0, 0, 0.19056249, 0, 0, 0, 0.5566021, 0, 1.9981408, -0.2734725)
 mesh = SubResource("BoxMesh_5yvoe")
 
-[node name="Pistol" parent="Player3" unique_id=1954340698 instance=ExtResource("3_6i505")]
-transform = Transform3D(0.19990191, -0.0062716375, 3.8638245e-07, 0.00627164, 0.19990167, -2.4628389e-05, 3.8614962e-07, 2.4628285e-05, 0.20000027, 2.382815, 0.9553329, -0.5750518)
-bulletSpeed = 20.0
-shotgunBullets = 20
-gunType = 2
-fireRate = 2.0
-spread = 0.03
+[node name="Ak" parent="." unique_id=1480509106 instance=ExtResource("4_cb14c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23306, 4.752497, 9.664464)
+
+[node name="Pistol" parent="." unique_id=1954340698 instance=ExtResource("3_6i505")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.321107, 4.3236494, 1.888432)
 
 [node name="Rpg" parent="." unique_id=387830702 instance=ExtResource("2_5yvoe")]
-transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, -4.744514, 0.9279928, 0.046745658)
-bulletSpeed = 6.7
-bulletPrefab = ExtResource("3_ts0dp")
-spread = 0.01
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.592691, 3.4391646, 8.527994)
+bulletSpeed = 10.0
 
 [node name="Smg" parent="." unique_id=1906586538 instance=ExtResource("3_tmdbc")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -5.672968, 1.0252544, -0.23802805)
-bulletSpeed = 55.0
-shotgunBullets = 5
-
-[node name="Ak" parent="." unique_id=1480509106 instance=ExtResource("4_cb14c")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -6.22509, 0.99168134, 0.5670364)
-bulletPrefab = ExtResource("5_cb14c")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17755699, 3.9014888, 6.7009964)

@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dw71pp0iddg0"]
 
-[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_nfstt"]
-[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://Bullet.tscn" id="2_a0mfr"]
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://scripts/TestGun.cs" id="1_nfstt"]
+[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://models/Bullet.tscn" id="2_a0mfr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcc7f"]
 albedo_color = Color(0.3515629, 0.3515629, 0.35156283, 1)
 
 [node name="Smg" type="Node3D" unique_id=1906586538 node_paths=PackedStringArray("shootPos")]
 script = ExtResource("1_nfstt")
-bulletSpeed = 20.0
+bulletSpeed = 25.0
 bulletPrefab = ExtResource("2_a0mfr")
 shootPos = NodePath("Marker3D")
 gunType = 1
-fireRate = 0.05
-spread = 0.01
+fireRate = 0.03
+spread = 0.02
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1305961070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23199463, -1.885498)

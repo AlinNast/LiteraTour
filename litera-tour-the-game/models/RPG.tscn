@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://62ptjpc3keny"]
 
-[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_h4wyr"]
-[ext_resource type="PackedScene" uid="uid://dgobw4uqh6glo" path="res://PLEASEWORKROCKET.tscn" id="2_pahev"]
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://scripts/TestGun.cs" id="1_h4wyr"]
+[ext_resource type="PackedScene" uid="uid://bl0hu4a7kn0ke" path="res://models/Rocket.tscn" id="2_44bcp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pahev"]
 albedo_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
@@ -19,9 +19,10 @@ albedo_color = Color(0.16924527, 0.1692453, 0.16924527, 1)
 albedo_color = Color(0.55235267, 0.59857005, 0.5291003, 1)
 
 [node name="Rpg" type="Node3D" unique_id=387830702 node_paths=PackedStringArray("shootPos")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("1_h4wyr")
-bulletSpeed = 6.0
-bulletPrefab = ExtResource("2_pahev")
+bulletSpeed = 10.0
+bulletPrefab = ExtResource("2_44bcp")
 shootPos = NodePath("Marker3D")
 fireRate = 2.0
 spread = 0.001

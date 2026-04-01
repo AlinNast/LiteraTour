@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drwr78wm8yqtb"]
 
-[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_70mh2"]
-[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://Bullet.tscn" id="2_v0kqv"]
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://scripts/TestGun.cs" id="1_70mh2"]
+[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://models/Bullet.tscn" id="2_v0kqv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70mh2"]
 albedo_color = Color(0.45554018, 0.34181744, 0.22341803, 1)

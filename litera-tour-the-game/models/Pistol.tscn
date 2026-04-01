@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cop3jkmd6j6c5"]
 
-[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://TestGun.cs" id="1_n8kc8"]
-[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://Bullet.tscn" id="2_awtjx"]
+[ext_resource type="Script" uid="uid://xkkbhsp8yvqo" path="res://scripts/TestGun.cs" id="1_n8kc8"]
+[ext_resource type="PackedScene" uid="uid://mkh1c3xuyl7m" path="res://models/Bullet.tscn" id="2_awtjx"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_n8kc8"]
 albedo_color = Color(0.427493, 0.42749307, 0.42749295, 1)
@@ -34,9 +34,11 @@ size = Vector3(0.4, 0.3, 0.5)
 
 [node name="Pistol" type="Node3D" unique_id=1954340698 node_paths=PackedStringArray("shootPos")]
 script = ExtResource("1_n8kc8")
-bulletSpeed = 12.0
+bulletSpeed = 20.0
 bulletPrefab = ExtResource("2_awtjx")
 shootPos = NodePath("ShootPos")
+fireRate = 0.35
+spread = 0.001
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=458380504]
 transform = Transform3D(0.999627, 0, -0.027311007, 0, 1, 0, 0.027311007, 0, 0.999627, 0, 0, 0)

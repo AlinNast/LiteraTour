@@ -89,7 +89,7 @@ public partial class Player : CharacterBody3D
 	{
 		HandleMovement(delta);
 		HandleAiming(delta);
-		HandleShooting(delta);
+		//HandleShooting(delta);
 	}
 
 
@@ -119,6 +119,8 @@ public partial class Player : CharacterBody3D
 		var hitbox = GetNode<Area3D>("HitBox");
 		hitbox.SetDeferred("monitoring", false);
 		hitbox.SetDeferred("monitorable", false);
+
+		//this.setprocess.(false)
 
 
 
@@ -177,7 +179,7 @@ public partial class Player : CharacterBody3D
 
 	private float shootCooldown = 0.15f;
 	private float shootTimer = 0f;
-	private void HandleShooting(double delta)
+	/*private void HandleShooting(double delta)
 	{
 		shootTimer -= (float)delta;
 
@@ -195,7 +197,7 @@ public partial class Player : CharacterBody3D
 		bullet.GlobalPosition = gunPoint.GlobalPosition;
 		bullet.GlobalRotation = GlobalRotation;
         bullet.LookAt(bullet.GlobalPosition + -GlobalTransform.Basis.Z, Vector3.Up);
-	}
+	}*/
 
 
 	public void TakeDamage(int damage)
