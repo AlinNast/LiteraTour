@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class PrototypeCrate : RigidBody3D
+public partial class LittleTest : RigidBody3D
 {
     [Export] public PackedScene BrokenModel;
     [Export] public PackedScene GroundEffects;
@@ -14,9 +14,9 @@ public partial class PrototypeCrate : RigidBody3D
         GetParent().AddChild(brokenModelInstantiate);
         brokenModelInstantiate.Transform = this.Transform;
 
-        // Node3D GroundEff = GroundEffects.Instantiate<Node3D>();
-        // GetParent().AddChild(GroundEff);
-        // GroundEff.Transform = this.Transform;
+        Node3D GroundEff = GroundEffects.Instantiate<Node3D>();
+        GetParent().AddChild(GroundEff);
+        GroundEff.Transform = this.Transform;
 
 
         QueueFree();

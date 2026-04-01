@@ -1,10 +1,24 @@
 using Godot;
 using System;
 using System.ComponentModel;
+using System.Data;
 using System.Xml;
 
 public partial class Player : CharacterBody3D
 {
+	public enum PlayerState
+	{
+		NORMAL,
+		HURT,
+		DEAD
+	}
+
+	public int PlayerHealth;
+
+
+	[Export] AnimationPlayer dead;
+
+	[Export] public int PlayerMaxhealth = 2;
 	[Export] public float PlayerMoveSpeed = 6f;
 	[Export] public float RotationSpeed = 10f;
 	[Export] public PackedScene BulletScene;
@@ -14,7 +28,9 @@ public partial class Player : CharacterBody3D
 	public string moveUp = "move_forward";
 	public string moveDown = "move_backward";
 
-	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-pistol-shot-01.wav");
+	public PlayerState CurrentState = PlayerState.NORMAL;
+
+	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-gunshot-01.wav");
 	AudioStreamPlayer3D audioPlayer = new AudioStreamPlayer3D();
 
 
@@ -24,6 +40,10 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready()
     {
+		PlayerHealth = PlayerMaxhealth;
+
+
+
 		AddChild(audioPlayer);
 
 		AddToGroup("players");
@@ -32,15 +52,86 @@ public partial class Player : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
-        HandleMovement(delta);
-		HandleAiming(delta);
-		HandleShooting(delta);
+		HandlePlayerState(delta);
+		
+        // HandleMovement(delta);
+		// HandleAiming(delta);
+		// HandleShooting(delta);
 		HandleAddtionalInputs(delta);
     }
 	/// <summary>
 	/// handle player movement
 	/// </summary>
 	/// <param name="delta"> delta is godot run time</param>
+	
+
+
+	//finite state
+	public void HandlePlayerState(double delta)
+	{
+		switch (CurrentState)
+		{
+			case PlayerState.NORMAL:
+				UpdateNormal(delta);
+				break;
+			case PlayerState.HURT:
+				UpdateHurt(delta);
+				break;
+			case PlayerState.DEAD:
+				UpdateDead();
+				break;
+		}
+	}
+
+
+
+	public void UpdateNormal(double delta)
+	{
+		HandleMovement(delta);
+		HandleAiming(delta);
+		HandleShooting(delta);
+	}
+
+
+	public void UpdateHurt(double delta)
+	{
+		// for polishing and stuff	
+	}
+
+	private bool isDead;
+	public void UpdateDead()
+	{
+		if (isDead)
+			return;
+		
+		isDead = true;
+		GetNode<CollisionShape3D>("HitBox/CollisionShape3D").Disabled = true;
+
+		if (CurrentState == PlayerState.DEAD)
+			return;
+
+		CurrentState = PlayerState.DEAD;
+
+		//play dead animation, and stop moving
+		dead.Play("dead");
+		Velocity = Vector3.Zero;
+
+		var hitbox = GetNode<Area3D>("HitBox");
+		hitbox.SetDeferred("monitoring", false);
+		hitbox.SetDeferred("monitorable", false);
+
+
+
+		//for later respawn
+		// if(revive or respawn condition)
+		// {
+		// 	CurrentState = PlayerState.NORMAL;
+		// }
+		
+	}
+
+
+
 	private void HandleMovement(double delta)
 	{
 		Vector2 input = Input.GetVector(moveLeft, moveRight, moveUp, moveDown);
@@ -51,7 +142,14 @@ public partial class Player : CharacterBody3D
 		if (direction.Length() > 1f)
 			direction = direction.Normalized();
 
-		Velocity = direction * PlayerMoveSpeed;
+		//add gravity
+		Vector3 velocity = Velocity;
+		velocity.X = direction.X * PlayerMoveSpeed;
+		velocity.Z = direction.Z * PlayerMoveSpeed;
+		if(!IsOnFloor())
+			velocity += GetGravity() * (float)delta;
+		Velocity = velocity;
+
 		MoveAndSlide();
 	}
 
@@ -97,6 +195,31 @@ public partial class Player : CharacterBody3D
 		bullet.GlobalPosition = gunPoint.GlobalPosition;
 		bullet.GlobalRotation = GlobalRotation;
         bullet.LookAt(bullet.GlobalPosition + -GlobalTransform.Basis.Z, Vector3.Up);
+	}
+
+
+	public void TakeDamage(int damage)
+	{
+		if (CurrentState == PlayerState.DEAD)
+			return;
+			
+		PlayerHealth -= damage;
+
+		if (PlayerHealth <= 0)
+			UpdateDead();
+	}
+
+
+	private void OnHitBoxAreaEntered(Area3D area)
+	{
+
+		if (CurrentState == PlayerState.DEAD)
+			return;
+
+		if (area is Bullet bullet)
+		{
+			TakeDamage(bullet.Damage);
+		}
 	}
 
 	private void HandleAddtionalInputs(double delta)
