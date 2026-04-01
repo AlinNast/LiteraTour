@@ -255,35 +255,6 @@ public partial class Enemy : CharacterBody3D
 		targetPlayer = null;
 	}
 
-	// private void HandleChoosingTarget()
-	// {
-	// 	var players = GetTree().GetNodesInGroup("players");
-
-	// 	if (players.Count == 0)
-	// 	{
-	// 		targetPlayer = null;
-	// 		return;
-	// 	}	
-		
-	// 	// Choose closest player.
-	// 	float closestDistance = float.MaxValue;
-
-	// 	foreach (Node node in players)
-	// 	{
-	// 		if (node is Player player)
-	// 		{
-	// 			float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
-
-	// 			if (distance < closestDistance)
-	// 			{
-	// 				closestDistance = distance;
-	// 				targetPlayer = player;
-	// 			}
-	// 		}
-	// 	}
-
-	// }
-
 	private void SmoothLookAt(Vector3 targetPosition, float delta)
 	{
 		Vector3 toTarget = (targetPosition - GlobalPosition).Normalized();
@@ -344,8 +315,8 @@ public partial class Enemy : CharacterBody3D
 		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 		float currentDistance = targetPlayer == null? float.MaxValue : GlobalPosition.DistanceTo(targetPlayer.GlobalPosition);
 
-		//if (distance < currentDistance - 0.5f)
-			//targetPlayer = player;
+		if (distance < currentDistance - 0.5f)
+			targetPlayer = player;
 	}
 
 	// TODO: Enemy attack and more player detection stuff

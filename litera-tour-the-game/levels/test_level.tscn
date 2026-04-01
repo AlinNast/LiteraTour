@@ -749,6 +749,7 @@ script = ExtResource("8_wndkh")
 EnemyType = ExtResource("3_r0nut")
 SpawnPoint = NodePath("../../SpawnPoints/Point2")
 MaxActiveEnemies = 5
+RespawnEnemy = true
 
 [node name="EnemyType3" type="Node" parent="EnemySpawnData" unique_id=1027368109 node_paths=PackedStringArray("SpawnPoint")]
 script = ExtResource("8_wndkh")
