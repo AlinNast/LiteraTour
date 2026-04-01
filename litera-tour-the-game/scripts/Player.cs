@@ -7,6 +7,7 @@ public partial class Player : CharacterBody3D
 	[Export] public float RotationSpeed = 10f;
 	[Export] public PackedScene BulletScene;
 
+	public int playerIndex = 0; // 0 for player 1, 1 for player 2, etc.
 	public string moveLeft = "move_left";
 	public string moveRight = "move_right";
 	public string moveUp = "move_forward";
@@ -19,6 +20,13 @@ public partial class Player : CharacterBody3D
 
     public override void _Ready()
     {
+<<<<<<< Updated upstream
+=======
+		AddChild(audioPlayer);
+
+		
+
+>>>>>>> Stashed changes
 		AddToGroup("players");
         gunPoint = GetNode<Marker3D>("GunPoint");
     }
@@ -37,6 +45,7 @@ public partial class Player : CharacterBody3D
 	private void HandleMovement(double delta)
 	{
 		Vector2 input = Input.GetVector(moveLeft, moveRight, moveUp, moveDown);
+		GD.Print($"Player {playerIndex + 1} input map: {moveLeft}, {moveRight}, {moveUp}, {moveDown}");
 
 		Vector3 direction = new Vector3(input.X, 0, input.Y);
 
@@ -46,6 +55,16 @@ public partial class Player : CharacterBody3D
 
 		Velocity = direction * PlayerMoveSpeed;
 		MoveAndSlide();
+	}
+
+	public void UpdateMapping(int newIndex)
+	{
+		playerIndex = newIndex;
+		/// set up player input mapping based on player index
+		moveLeft = $"{moveLeft}{playerIndex.ToString()}";
+		moveRight = $"{moveRight}{playerIndex.ToString()}";
+		moveUp = $"{moveUp}{playerIndex.ToString()}";
+		moveDown = $"{moveDown}{playerIndex.ToString()}";
 	}
 
 	private void HandleAiming(double delta)
@@ -75,7 +94,6 @@ public partial class Player : CharacterBody3D
 	private void HandleShooting(double delta)
 	{
 		shootTimer -= (float)delta;
-
 		if (!Input.IsActionPressed("shoot") || shootTimer > 0)
 			return;
 		

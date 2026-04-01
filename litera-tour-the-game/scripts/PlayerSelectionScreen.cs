@@ -37,7 +37,7 @@ public partial class PlayerSelectionScreen : Control
 		}
 
 		// navigate through the buttons with the arrow keys
-		if( Input.IsActionJustPressed("MenuSelectLeft") )
+		if( Input.IsActionJustPressed("MenuSelectLeft"))
 		{
 			if (currentHighlightedButton == playerButton2)
 			{
