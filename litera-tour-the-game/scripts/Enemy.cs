@@ -45,9 +45,11 @@ public partial class Enemy : CharacterBody3D
 	{
 		if(newState == Player.PlayerState.DEAD )
 		{
-			if (currentState == EnemyState.IDLE)
-				return;
-			currentState = EnemyState.IDLE;
+			if(targetPlayer == player)
+			{
+				targetPlayer = null;
+				currentState = EnemyState.IDLE;
+			}
 		}
 	}
 
@@ -55,6 +57,18 @@ public partial class Enemy : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {	
+		
+		
+		if (targetPlayer != null && targetPlayer.CurrentState == Player.PlayerState.DEAD)
+    {
+        targetPlayer = null;
+        currentState = EnemyState.IDLE;
+    }
+
+
+
+
+
 		HandleEnemyState(delta);
 
 		// Debug
