@@ -190,6 +190,8 @@ public partial class Player : CharacterBody3D
 		audioPlayer.Play();
 
 		var bullet = BulletScene.Instantiate<Node3D>();
+
+		// Sibling instead of child!
 		AddSibling(bullet);
 		
 		bullet.GlobalPosition = gunPoint.GlobalPosition;
