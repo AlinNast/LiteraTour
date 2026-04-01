@@ -14,7 +14,7 @@ public partial class Player : CharacterBody3D
 	public string moveUp = "move_forward";
 	public string moveDown = "move_backward";
 
-	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-gunshot-01.wav");
+	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-pistol-shot-01.wav");
 	AudioStreamPlayer3D audioPlayer = new AudioStreamPlayer3D();
 
 

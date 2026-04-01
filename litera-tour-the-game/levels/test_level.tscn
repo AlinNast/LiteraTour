@@ -193,10 +193,12 @@ shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=108062103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 7
+collision_mask = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1998165078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)
-layers = 3
+layers = 7
 mesh = SubResource("BoxMesh_yxcr3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=877284036]
@@ -646,7 +648,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8233776, 2.4000003, 45.402
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=2132869068]
 
 [node name="Point1" type="MeshInstance3D" parent="SpawnPoints" unique_id=579433004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.551362, 4.3792276, 25.195778)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.551362, 15.150989, 25.195778)
 material_override = SubResource("StandardMaterial3D_0gr2h")
 mesh = SubResource("BoxMesh_41g52")
 
@@ -666,9 +668,8 @@ mesh = SubResource("BoxMesh_41g52")
 script = ExtResource("8_wndkh")
 EnemyType = ExtResource("3_r0nut")
 SpawnPoint = NodePath("../../SpawnPoints/Point1")
-MaxActiveEnemies = 2
 RespawnEnemy = true
-TotalEnemySpawnLimit = 2
+RespawnDelay = 2.0
 
 [node name="EnemyType2" type="Node" parent="EnemySpawnData" unique_id=566315472 node_paths=PackedStringArray("SpawnPoint")]
 script = ExtResource("8_wndkh")

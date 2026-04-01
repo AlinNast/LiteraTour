@@ -15,7 +15,7 @@ public partial class Enemy : CharacterBody3D
 	[ExportGroup("Enemy Setting")]
 	[Export] public float MoveSpeed = 3f;
 	[Export] public int MaxHealth = 1;
-	[Export] public float ChaseRange = 10f;
+	[Export] public float ChaseRange = 20f;
 	[Export] public float RetargetTime = 2f;
 	[Export] public float WaitTime = 1f;
 	[Export] public float LookRotateSpeed = 5f;
@@ -32,7 +32,6 @@ public partial class Enemy : CharacterBody3D
     public override void _Ready()
     {
         health = MaxHealth;
-		HandleChoosingTarget();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -49,7 +48,8 @@ public partial class Enemy : CharacterBody3D
 		// Retarget logic.
         if (targetPlayer == null)
 		{
-			HandleChoosingTarget();
+			targetPlayer = FindColsestPlayer();
+			//HandleChoosingTarget();
 			return;
 		}
 		
@@ -57,7 +57,9 @@ public partial class Enemy : CharacterBody3D
 		
 		if (retargetTimer >= RetargetTime)
 		{
-			HandleChoosingTarget();
+			targetPlayer = FindColsestPlayer();
+
+			//HandleChoosingTarget();
 			retargetTimer = 0f;
 		}
 
@@ -89,7 +91,6 @@ public partial class Enemy : CharacterBody3D
 			{
 				if (GlobalPosition.DistanceTo(player.GlobalPosition) <= ChaseRange)
 				{
-					targetPlayer = player;
 					return true;
 				}
 			}
@@ -134,13 +135,19 @@ public partial class Enemy : CharacterBody3D
 		MoveAndSlide();
 
 		if (IsAnyPlayerInRange())
+		{
 			currentState = EnemyState.CHASING;
+		}
+			
+
+		// Idle animation
 	}
 
 	private void UpdateChasing(double delta)
 	{
 		if (targetPlayer == null)
 		{
+			targetPlayer = FindColsestPlayer();
 			return;
 		}
 
@@ -226,7 +233,7 @@ public partial class Enemy : CharacterBody3D
 		// Notify LevelManager script
 		Died?.Invoke(this);
 
-		// Fixed joit physics engine screaming error by disable Area3D moitoring
+		// Fixed joit physics engine screaming error by disable Area3D moitoring (partial fix, joit still scream out error sometime but the game work fine)
 		var hitbox = GetNode<Area3D>("HitBox");
 		hitbox.SetDeferred("monitoring", false);
 		hitbox.SetDeferred("monitorable", false);
@@ -343,9 +350,11 @@ public partial class Enemy : CharacterBody3D
 		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 		float currentDistance = targetPlayer == null? float.MaxValue : GlobalPosition.DistanceTo(targetPlayer.GlobalPosition);
 
-		if (distance < currentDistance - 0.5f)
-			targetPlayer = player;
+		//if (distance < currentDistance - 0.5f)
+			//targetPlayer = player;
 	}
+
+	// TODO: Enemy attack and more player detection stuff
 
 	private void OnPlayerShoot(Player player)
 	{
@@ -361,5 +370,27 @@ public partial class Enemy : CharacterBody3D
 	public void OnPlayerExit()
 	{
 		IsPlayerInside = false;
+	}
+
+	private Player FindColsestPlayer()
+	{
+		var players = GetTree().GetNodesInGroup("players");
+		Player closest = null;
+		float closestDistance = float.MaxValue;
+
+		foreach (Node node in players)
+		{
+			if (node is Player player)
+			{
+				float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+				if (distance < closestDistance)
+				{
+					closestDistance = distance;
+					closest = player;
+				}
+			}
+		}
+
+		return closest;
 	}
 }

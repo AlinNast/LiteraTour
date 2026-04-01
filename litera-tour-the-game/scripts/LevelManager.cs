@@ -74,6 +74,10 @@ public partial class LevelManager : Node
 		
 	}
 
+	/// <summary>
+	/// Spawn enemy using EnemySpawnData script from each level
+	/// </summary>
+	/// <param name="level"></param>
 	public void SpawnEnemiesFromLevel(Node3D level)
 	{
 		foreach (Node child in level.GetTree().GetNodesInGroup("enemy_spawn_data"))
@@ -95,6 +99,10 @@ public partial class LevelManager : Node
 		}
 	}
 
+	/// <summary>
+	/// When enemy died check EnemySpawnData script for Respawn and MaxActiveEnemies amount
+	/// </summary>
+	/// <param name="enemySpawnData"></param>
 	private async void OnEnemyDied(EnemySpawnData enemySpawnData)
 	{
 		enemySpawnData.ActiveEnemies--;
@@ -109,6 +117,11 @@ public partial class LevelManager : Node
 		}
 	}
 
+
+	/// <summary>
+	/// Respwan 1 enemy instance when called base on EnemySpawnData script and check for TotalEnemySpawnLimit
+	/// </summary>
+	/// <param name="enemySpawnData"></param>
 	private void SpawnOneEnemy(EnemySpawnData enemySpawnData)
 	{
 		if (enemySpawnData.TotalEnemySpawnLimit != -1 && enemySpawnData.TotalEnemySpawned >= enemySpawnData.TotalEnemySpawnLimit)
