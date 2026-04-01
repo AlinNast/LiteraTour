@@ -33,7 +33,25 @@ public partial class Enemy : CharacterBody3D
     public override void _Ready()
     {
         health = MaxHealth;
-    }
+
+		foreach (var player in LevelManager.Instance.currentPlayers)
+    	{
+        	player.OnStateChanged += OnPlayerStateChanged;
+    	}
+	}
+
+	//subscribe player
+	private void OnPlayerStateChanged(Player player, Player.PlayerState newState)
+	{
+		if(newState == Player.PlayerState.DEAD )
+		{
+			if (currentState == EnemyState.IDLE)
+				return;
+			currentState = EnemyState.IDLE;
+		}
+	}
+
+
 
     public override void _PhysicsProcess(double delta)
     {	
