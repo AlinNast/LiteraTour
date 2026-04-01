@@ -20,6 +20,7 @@ public partial class Enemy : CharacterBody3D
 	[Export] public float WaitTime = 1f;
 	[Export] public float LookRotateSpeed = 5f;
 	[Export] public PackedScene BrokenModel;
+	[Export] public NavigationAgent3D navigationAgent;
 	
 	private int health;
 	private bool IsPlayerInside = false;
@@ -48,7 +49,7 @@ public partial class Enemy : CharacterBody3D
 		// Retarget logic.
         if (targetPlayer == null)
 		{
-			targetPlayer = FindColsestPlayer();
+			targetPlayer = FindClosestPlayer();
 			//HandleChoosingTarget();
 			return;
 		}
@@ -57,7 +58,8 @@ public partial class Enemy : CharacterBody3D
 		
 		if (retargetTimer >= RetargetTime)
 		{
-			targetPlayer = FindColsestPlayer();
+			targetPlayer = FindClosestPlayer();
+			navigationAgent.TargetPosition = targetPlayer.Position;
 
 			//HandleChoosingTarget();
 			retargetTimer = 0f;
@@ -147,7 +149,7 @@ public partial class Enemy : CharacterBody3D
 	{
 		if (targetPlayer == null)
 		{
-			targetPlayer = FindColsestPlayer();
+			targetPlayer = FindClosestPlayer();
 			return;
 		}
 
@@ -160,27 +162,19 @@ public partial class Enemy : CharacterBody3D
 		if (targetPlayer == null)
 			return;
 
+
 		// Apply gravity
 		Vector3 gravity = GetGravity();
 		Vector3 velocity = Velocity;
 		velocity += gravity * (float)delta;
 
-		Vector3 direction = targetPlayer.GlobalTransform.Origin - GlobalTransform.Origin;
-		direction.Y = 0;
+		Vector3 nextPosition = navigationAgent.GetNextPathPosition();
+		Vector3 currentPosition = GlobalTransform.Origin;
+		Vector3 newVelocity = (nextPosition - currentPosition).Normalized() * MoveSpeed;
 
-		if (direction.Length() > 0.1f)
-		{
-			Vector3 move = direction.Normalized() * MoveSpeed;
-			
-			if (IsOnFloor())
-			{
-				velocity.X = move.X;
-				velocity.Z = move.Z;
+		velocity = velocity.MoveToward(newVelocity, 1);
 
-				//Chasing Animation
-				SmoothLookAt(targetPlayer.GlobalPosition, (float)delta);
-			}	
-		}
+		SmoothLookAt(targetPlayer.Position, LookRotateSpeed * (float)delta);
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -261,34 +255,34 @@ public partial class Enemy : CharacterBody3D
 		targetPlayer = null;
 	}
 
-	private void HandleChoosingTarget()
-	{
-		var players = GetTree().GetNodesInGroup("players");
+	// private void HandleChoosingTarget()
+	// {
+	// 	var players = GetTree().GetNodesInGroup("players");
 
-		if (players.Count == 0)
-		{
-			targetPlayer = null;
-			return;
-		}	
+	// 	if (players.Count == 0)
+	// 	{
+	// 		targetPlayer = null;
+	// 		return;
+	// 	}	
 		
-		// Choose closest player.
-		float closestDistance = float.MaxValue;
+	// 	// Choose closest player.
+	// 	float closestDistance = float.MaxValue;
 
-		foreach (Node node in players)
-		{
-			if (node is Player player)
-			{
-				float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+	// 	foreach (Node node in players)
+	// 	{
+	// 		if (node is Player player)
+	// 		{
+	// 			float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 
-				if (distance < closestDistance)
-				{
-					closestDistance = distance;
-					targetPlayer = player;
-				}
-			}
-		}
+	// 			if (distance < closestDistance)
+	// 			{
+	// 				closestDistance = distance;
+	// 				targetPlayer = player;
+	// 			}
+	// 		}
+	// 	}
 
-	}
+	// }
 
 	private void SmoothLookAt(Vector3 targetPosition, float delta)
 	{
@@ -372,7 +366,7 @@ public partial class Enemy : CharacterBody3D
 		IsPlayerInside = false;
 	}
 
-	private Player FindColsestPlayer()
+	private Player FindClosestPlayer()
 	{
 		var players = GetTree().GetNodesInGroup("players");
 		Player closest = null;
@@ -387,6 +381,7 @@ public partial class Enemy : CharacterBody3D
 				{
 					closestDistance = distance;
 					closest = player;
+					GD.Print("closest player position: " + closest.Position);
 				}
 			}
 		}

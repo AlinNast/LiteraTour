@@ -16,12 +16,12 @@ size = Vector3(0.6, 0.2, 0.4)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sle4t"]
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1226634607]
+[node name="Enemy" type="CharacterBody3D" unique_id=1226634607 node_paths=PackedStringArray("navigationAgent")]
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("1_6n8dw")
-MaxHealth = 3
 BrokenModel = ExtResource("2_1me52")
+navigationAgent = NodePath("NavigationAgent3D")
 
 [node name="enemy_mesh" type="MeshInstance3D" parent="." unique_id=274657904]
 mesh = SubResource("CapsuleMesh_8y0ni")
@@ -37,5 +37,7 @@ shape = SubResource("CapsuleShape3D_g7n0o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=1089596695]
 shape = SubResource("CapsuleShape3D_sle4t")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=901980511]
 
 [connection signal="area_entered" from="HitBox" to="." method="OnHitBoxAreaEntered"]
