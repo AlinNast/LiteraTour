@@ -15,7 +15,7 @@ public partial class TestGun : Node3D
 	[Export] public float fireRate;
 	[Export] public float spread;
 
-	private float shootTimer = 9999999999999;
+	private float shootTimer = 99999;
 	private bool isShooting = false;
 	
 

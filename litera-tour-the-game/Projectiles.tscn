@@ -44,7 +44,7 @@ transform = Transform3D(0.9971018, -0.07605424, 0.0019501224, 0.055355534, 0.742
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=316703535]
-transform = Transform3D(77.37617, 0, 0, 0, 0.9996801, 0, 0, 0, 10.803197, 0, 0, -27.184046)
+transform = Transform3D(77.37617, 0, 0, 0, 0.99968004, 0, 0, 0, 10.803197, 0, 0, -27.184046)
 size = Vector3(1, 1, 11.444946)
 material = SubResource("StandardMaterial3D_v6c45")
 
@@ -80,9 +80,11 @@ transform = Transform3D(0.7865144, 0, 0, 0, 0.19056249, 0, 0, 0, 0.5566021, 0, 1
 mesh = SubResource("BoxMesh_5yvoe")
 
 [node name="Pistol" parent="Player3" unique_id=1954340698 instance=ExtResource("3_6i505")]
-transform = Transform3D(0.20000021, 0, 0, 0, 0.19999999, 0, 0, 0, 0.20000023, 2.382815, 0.9553329, -0.57505167)
+transform = Transform3D(0.19990191, -0.0062716375, 3.8638245e-07, 0.00627164, 0.19990167, -2.4628389e-05, 3.8614962e-07, 2.4628285e-05, 0.20000027, 2.382815, 0.9553329, -0.5750518)
 bulletSpeed = 20.0
-fireRate = 0.05
+shotgunBullets = 20
+gunType = 2
+fireRate = 2.0
 spread = 0.03
 
 [node name="Rpg" parent="." unique_id=387830702 instance=ExtResource("2_5yvoe")]

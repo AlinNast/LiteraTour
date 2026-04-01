@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dwv2adlqorbm3" path="res://Bullet.cs" id="1_ayd6b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ayd6b"]
+radius = 2.0229492
+height = 5.869385
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayd6b"]
 albedo_color = Color(0.73333335, 0.54509807, 0.22352941, 1)
@@ -20,13 +22,13 @@ material = SubResource("StandardMaterial3D_4s4u5")
 script = ExtResource("1_ayd6b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=200381170]
-transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 0, 0)
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, -1.7448274e-09, 0.039916992)
 shape = SubResource("CapsuleShape3D_ayd6b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=131297172]
-transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 0, 0)
+transform = Transform3D(0.1951205, 0, 0, 0, -3.5702108e-09, -0.18264268, 0, 0.0816769, -7.983566e-09, 0, 0, -0.017990083)
 mesh = SubResource("CapsuleMesh_4s4u5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=443892779]
-transform = Transform3D(0.055, 1.4861873e-09, -2.101754e-16, 0, -7.4309364e-10, -0.055, -4.808253e-09, 0.017, -2.4041265e-09, 0, 0, 0.034532472)
+transform = Transform3D(0.19512047, 7.140423e-09, -6.979455e-16, 0, -3.5702112e-09, -0.18264268, -1.7057976e-08, 0.08167691, -7.983566e-09, 0, 0, 0.052522555)
 mesh = SubResource("CylinderMesh_7281b")
