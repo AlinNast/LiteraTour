@@ -30,7 +30,7 @@ public partial class Player : CharacterBody3D
 
 	public PlayerState CurrentState = PlayerState.NORMAL;
 
-	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-gunshot-01.wav");
+	AudioStreamWav shootSound = GD.Load<AudioStreamWav>("res://sounds/gun-pistol-shot-01.wav");
 	AudioStreamPlayer3D audioPlayer = new AudioStreamPlayer3D();
 
 

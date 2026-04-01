@@ -18,11 +18,11 @@ radius = 0.9916992
 [node name="FlameGround" type="Node3D" unique_id=2100863866]
 script = ExtResource("1_bfc84")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1748248987]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1787683862]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1787683862]
 mesh = SubResource("CylinderMesh_fedlh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1994706706]
+[node name="Area3D" type="Area3D" parent="." unique_id=1961528412]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1994706706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0044896603, 0)
 shape = SubResource("CylinderShape3D_jyv1q")

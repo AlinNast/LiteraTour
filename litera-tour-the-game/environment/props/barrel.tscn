@@ -22,6 +22,8 @@ height = 0.99780273
 height = 4.015869
 
 [node name="BoomBarrel" type="RigidBody3D" unique_id=506380167]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_2rxa2")
 BrokenModel = ExtResource("2_gdksm")
 GroundEffects = ExtResource("3_r2577")

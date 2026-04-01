@@ -740,18 +740,18 @@ mesh = SubResource("BoxMesh_41g52")
 [node name="EnemyType1" type="Node" parent="EnemySpawnData" unique_id=719125360 node_paths=PackedStringArray("SpawnPoint")]
 script = ExtResource("8_wndkh")
 EnemyType = ExtResource("3_r0nut")
+SpawnPoint = NodePath("../../SpawnPoints/Point1")
 RespawnEnemy = true
 RespawnDelay = 2.0
-SpawnPoint = NodePath("../../SpawnPoints/Point1")
 
 [node name="EnemyType2" type="Node" parent="EnemySpawnData" unique_id=566315472 node_paths=PackedStringArray("SpawnPoint")]
 script = ExtResource("8_wndkh")
 EnemyType = ExtResource("3_r0nut")
-MaxActiveEnemies = 5
 SpawnPoint = NodePath("../../SpawnPoints/Point2")
+MaxActiveEnemies = 5
 
 [node name="EnemyType3" type="Node" parent="EnemySpawnData" unique_id=1027368109 node_paths=PackedStringArray("SpawnPoint")]
 script = ExtResource("8_wndkh")
 EnemyType = ExtResource("3_r0nut")
-MaxActiveEnemies = 3
 SpawnPoint = NodePath("../../SpawnPoints/Point3")
+MaxActiveEnemies = 3
