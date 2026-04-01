@@ -13,7 +13,7 @@ size = Vector3(0.6, 0.4, 0.2)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3eadt"]
 
 [sub_resource type="Animation" id="Animation_3eadt"]
-length = 0.001
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -21,10 +21,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.5707964)]
 }
 
 [sub_resource type="Animation" id="Animation_tory2"]
@@ -54,9 +54,11 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_72ieh")
 dead = NodePath("AnimationPlayer")
+PlayerMaxhealth = 5
 BulletScene = ExtResource("2_4dohe")
 
 [node name="player_mesh" type="MeshInstance3D" parent="." unique_id=1611989918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_yjvhs")
 
 [node name="player_eyes_mesh" type="MeshInstance3D" parent="player_mesh" unique_id=1099071708]
@@ -64,12 +66,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5)
 mesh = SubResource("BoxMesh_mhtc4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=816715218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yjvhs")
 
 [node name="GunPoint" type="Marker3D" parent="." unique_id=241500078]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.8)
 
 [node name="HitBox" type="Area3D" parent="." unique_id=864619306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=413341743]
 shape = SubResource("CapsuleShape3D_3eadt")

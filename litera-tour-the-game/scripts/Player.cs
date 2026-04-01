@@ -65,6 +65,8 @@ public partial class Player : CharacterBody3D
 	/// <param name="delta"> delta is godot run time</param>
 	
 
+
+	//finite state
 	public void HandlePlayerState(double delta)
 	{
 		switch (CurrentState)
@@ -93,7 +95,7 @@ public partial class Player : CharacterBody3D
 
 	public void UpdateHurt(double delta)
 	{
-		
+		// for polishing and stuff	
 	}
 
 	private bool isDead;
@@ -110,12 +112,21 @@ public partial class Player : CharacterBody3D
 
 		CurrentState = PlayerState.DEAD;
 
+		//play dead animation, and stop moving
 		dead.Play("dead");
 		Velocity = Vector3.Zero;
 
 		var hitbox = GetNode<Area3D>("HitBox");
 		hitbox.SetDeferred("monitoring", false);
 		hitbox.SetDeferred("monitorable", false);
+
+
+
+		//for later respawn
+		// if(revive or respawn condition)
+		// {
+		// 	CurrentState = PlayerState.NORMAL;
+		// }
 		
 	}
 
