@@ -21,9 +21,10 @@ albedo_color = Color(0.55235267, 0.59857005, 0.5291003, 1)
 [node name="Rpg" type="Node3D" unique_id=387830702 node_paths=PackedStringArray("shootPos")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("1_h4wyr")
-bulletSpeed = 10.0
 bulletPrefab = ExtResource("2_44bcp")
 shootPos = NodePath("Marker3D")
+isAuto = true
+bulletSpeed = 10.0
 fireRate = 2.0
 spread = 0.001
 

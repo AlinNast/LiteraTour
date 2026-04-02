@@ -19,6 +19,8 @@ albedo_color = Color(0.73268694, 0.5435626, 0.22239968, 1)
 material = SubResource("StandardMaterial3D_4s4u5")
 
 [node name="Bullet" type="Area3D" unique_id=52620366]
+collision_layer = 512
+collision_mask = 15
 script = ExtResource("1_1en4c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=200381170]
@@ -33,4 +35,4 @@ mesh = SubResource("CapsuleMesh_4s4u5")
 transform = Transform3D(0.505, 2.509034e-08, -2.0367909e-15, 0, -1.25451685e-08, -0.533, -4.414851e-08, 0.287, -2.329817e-08, 0, 0, 0.052522555)
 mesh = SubResource("CylinderMesh_7281b")
 
-[connection signal="area_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

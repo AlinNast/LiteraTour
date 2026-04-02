@@ -10,6 +10,8 @@ albedo_color = Color(0.40138838, 0.46031916, 0.25657746, 1)
 
 [node name="Rocket" type="Area3D" unique_id=615799267]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+collision_layer = 512
+collision_mask = 15
 script = ExtResource("1_0342g")
 Damage = 3
 
@@ -51,4 +53,4 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 cone = true
 material = SubResource("StandardMaterial3D_j0y6u")
 
-[connection signal="area_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

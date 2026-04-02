@@ -48,6 +48,8 @@ material = SubResource("StandardMaterial3D_v6c45")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=623275634]
 transform = Transform3D(77.37617, 0, 0, 0, 0.9996801, 0, 0, 0, 10.803197, 0, 19.391684, -78.84466)
+use_collision = true
+collision_mask = 512
 size = Vector3(1, 39.795776, 0.029693604)
 material = SubResource("StandardMaterial3D_v6c45")
 
@@ -79,13 +81,22 @@ mesh = SubResource("BoxMesh_5yvoe")
 
 [node name="Ak" parent="." unique_id=1480509106 instance=ExtResource("4_cb14c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23306, 4.752497, 9.664464)
+fireRate = 0.0
+spread = 0.1
+bulletAmount = 10
 
 [node name="Pistol" parent="." unique_id=1954340698 instance=ExtResource("3_6i505")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.321107, 4.3236494, 1.888432)
+fireRate = 0.0
+spread = 0.02
 
 [node name="Rpg" parent="." unique_id=387830702 instance=ExtResource("2_5yvoe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.592691, 3.4391646, 8.527994)
-bulletSpeed = 10.0
+bulletSpeed = 50.0
+fireRate = 0.0
+spread = 0.06
 
 [node name="Smg" parent="." unique_id=1906586538 instance=ExtResource("3_tmdbc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17755699, 3.9014888, 6.7009964)
+fireRate = 0.05
+bulletAmount = 3

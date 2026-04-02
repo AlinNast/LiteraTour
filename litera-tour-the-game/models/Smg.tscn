@@ -8,10 +8,10 @@ albedo_color = Color(0.3515629, 0.3515629, 0.35156283, 1)
 
 [node name="Smg" type="Node3D" unique_id=1906586538 node_paths=PackedStringArray("shootPos")]
 script = ExtResource("1_nfstt")
-bulletSpeed = 25.0
 bulletPrefab = ExtResource("2_a0mfr")
 shootPos = NodePath("Marker3D")
-gunType = 1
+isAuto = true
+bulletSpeed = 25.0
 fireRate = 0.03
 spread = 0.02
 

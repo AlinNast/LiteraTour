@@ -34,9 +34,10 @@ size = Vector3(0.4, 0.3, 0.5)
 
 [node name="Pistol" type="Node3D" unique_id=1954340698 node_paths=PackedStringArray("shootPos")]
 script = ExtResource("1_n8kc8")
-bulletSpeed = 20.0
 bulletPrefab = ExtResource("2_awtjx")
 shootPos = NodePath("ShootPos")
+isSemi = true
+bulletSpeed = 20.0
 fireRate = 0.35
 spread = 0.001
 
