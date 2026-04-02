@@ -34,14 +34,26 @@ public partial class Player : CharacterBody3D
 	AudioStreamPlayer3D audioPlayer = new AudioStreamPlayer3D();
 
 
-
-
 	private Marker3D gunPoint;
+
+
+	//observer pattern
+	public event Action<Player,PlayerState> OnStateChanged;
+
+
+	public void SetState(PlayerState newState)
+	{
+		CurrentState = newState;
+
+		OnStateChanged?.Invoke(this, newState);
+	}
+
+
 
     public override void _Ready()
     {
-		PlayerHealth = PlayerMaxhealth;
 
+		PlayerHealth = PlayerMaxhealth;
 
 
 		AddChild(audioPlayer);
@@ -110,7 +122,7 @@ public partial class Player : CharacterBody3D
 		if (CurrentState == PlayerState.DEAD)
 			return;
 
-		CurrentState = PlayerState.DEAD;
+		SetState(PlayerState.DEAD);
 
 		//play dead animation, and stop moving
 		dead.Play("dead");

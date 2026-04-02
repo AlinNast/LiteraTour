@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using System.Collections.Generic; 
 public partial class Enemy : CharacterBody3D
 {
 	public event Action<Enemy> Died;
@@ -30,13 +30,48 @@ public partial class Enemy : CharacterBody3D
 
 	private EnemyState currentState = EnemyState.IDLE;
 
+
+
+	private List<Player> _alivePlayers = new List<Player>();
+
     public override void _Ready()
     {
         health = MaxHealth;
-    }
+
+		foreach (var player in LevelManager.Instance.currentPlayers)
+    	{
+			
+        	player.OnStateChanged += OnPlayerStateChanged;
+			if (player.CurrentState != Player.PlayerState.DEAD)
+			{
+				_alivePlayers.Add(player);
+			}
+    	}
+		
+	}
+
+	//subscribe player,not use for now but in future
+	private void OnPlayerStateChanged(Player player, Player.PlayerState newState)
+	{
+		
+	}
+
+
 
     public override void _PhysicsProcess(double delta)
     {	
+		
+		//debug do not delete for now
+		// if (targetPlayer != null && targetPlayer.CurrentState == Player.PlayerState.DEAD)
+		// {
+		// 	targetPlayer = null;
+		// 	currentState = EnemyState.IDLE;
+		// }
+
+
+
+
+
 		HandleEnemyState(delta);
 
 		// Debug
@@ -53,17 +88,20 @@ public partial class Enemy : CharacterBody3D
 			//HandleChoosingTarget();
 			return;
 		}
-		
-		retargetTimer += (float)delta;
-		
-		if (retargetTimer >= RetargetTime)
+		if(targetPlayer != null)
 		{
-			targetPlayer = FindClosestPlayer();
-			navigationAgent.TargetPosition = targetPlayer.Position;
+			retargetTimer += (float)delta;
+		
+			if (retargetTimer >= RetargetTime)
+			{
+				targetPlayer = FindClosestPlayer();
+				navigationAgent.TargetPosition = targetPlayer.Position;
 
-			//HandleChoosingTarget();
-			retargetTimer = 0f;
+				//HandleChoosingTarget();
+				retargetTimer = 0f;
+			}
 		}
+		
 
 		// Debug
 		//GD.Print("Target: ", targetPlayer?.Name);
@@ -91,6 +129,7 @@ public partial class Enemy : CharacterBody3D
 		{
 			if (node is Player player)
 			{
+				
 				if (GlobalPosition.DistanceTo(player.GlobalPosition) <= ChaseRange)
 				{
 					return true;
@@ -150,6 +189,13 @@ public partial class Enemy : CharacterBody3D
 		if (targetPlayer == null)
 		{
 			targetPlayer = FindClosestPlayer();
+			return;
+		}
+
+		if (targetPlayer.CurrentState == Player.PlayerState.DEAD)
+		{
+			targetPlayer = null;
+			currentState = EnemyState.IDLE;
 			return;
 		}
 
@@ -361,6 +407,10 @@ public partial class Enemy : CharacterBody3D
 		{
 			if (node is Player player)
 			{
+
+				if (player.CurrentState == Player.PlayerState.DEAD)
+                continue;
+
 				float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 				if (distance < closestDistance)
 				{

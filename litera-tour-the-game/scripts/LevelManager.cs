@@ -15,7 +15,7 @@ public partial class LevelManager : Node
 
 
     public List<string> levelList = ["uid://b12vb63dc5058"];
-	List<Player> currentPlayers = new List<Player>();
+	public List<Player> currentPlayers = new List<Player>();
 
 
 	PackedScene playerScene = GD.Load<PackedScene>("uid://c603fi583baqe");
@@ -43,11 +43,18 @@ public partial class LevelManager : Node
 			Player player = playerScene.Instantiate() as Player;
 			AddChild(player);
 			currentPlayers.Add(player);
+
+			player.OnStateChanged += OnPlayerStateChanged;
 		}
 
 
 		SpawnPlayers();
 		SpawnCamera();
+	}
+
+	private void OnPlayerStateChanged(Player player,Player.PlayerState newState)
+	{
+		
 	}
 
 
@@ -73,4 +80,6 @@ public partial class LevelManager : Node
 
 		
 	}
+
+	
 }
