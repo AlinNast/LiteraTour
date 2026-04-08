@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://dd4747nujhnmx"]
+[gd_scene format=3 uid="uid://b72dbib08kciw"]
+
+[ext_resource type="PackedScene" uid="uid://b5llkcx0oo0m7" path="res://environment/platform.tscn" id="1_o0vtm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3l3id"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tm4tk"]
 
 [node name="Hub" type="Node3D" unique_id=431333004]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1130806866]
+transform = Transform3D(100, 0, 0, 0, 0.05, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("BoxMesh_3l3id")
+
+[node name="Platform" parent="." unique_id=1817988188 instance=ExtResource("1_o0vtm")]
+transform = Transform3D(0.6922943, 0, 0.72161525, 0, 1, 0, -0.72161525, 0, 0.6922943, 78.55946, 1, -19.652683)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=559940234]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, 3.2970018, 2.289909, -2.90512)
+mesh = SubResource("BoxMesh_tm4tk")

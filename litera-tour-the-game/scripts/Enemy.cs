@@ -34,19 +34,19 @@ public partial class Enemy : CharacterBody3D
 
 	private List<Player> _alivePlayers = new List<Player>();
 
-    public override void _Ready()
-    {
-        health = MaxHealth;
+	public override void _Ready()
+	{
+		health = MaxHealth;
 
 		foreach (var player in LevelManager.Instance.currentPlayers)
-    	{
+		{
 			
-        	player.OnStateChanged += OnPlayerStateChanged;
+			player.OnStateChanged += OnPlayerStateChanged;
 			if (player.CurrentState != Player.PlayerState.DEAD)
 			{
 				_alivePlayers.Add(player);
 			}
-    	}
+		}
 		
 	}
 
@@ -58,8 +58,8 @@ public partial class Enemy : CharacterBody3D
 
 
 
-    public override void _PhysicsProcess(double delta)
-    {	
+	public override void _PhysicsProcess(double delta)
+	{	
 		
 		//debug do not delete for now
 		// if (targetPlayer != null && targetPlayer.CurrentState == Player.PlayerState.DEAD)
@@ -82,7 +82,7 @@ public partial class Enemy : CharacterBody3D
 			return;
 
 		// Retarget logic.
-        if (targetPlayer == null)
+		if (targetPlayer == null)
 		{
 			targetPlayer = FindClosestPlayer();
 			//HandleChoosingTarget();
@@ -107,7 +107,7 @@ public partial class Enemy : CharacterBody3D
 		//GD.Print("Target: ", targetPlayer?.Name);
 		//GD.Print("Distance: ", GlobalPosition.DistanceTo(targetPlayer.GlobalPosition));
 		DebugDraw3D.DrawLine(GlobalPosition, targetPlayer.GlobalPosition, Colors.Red);
-    }
+	}
 
 	/// <summary>
 	/// Enemy range
@@ -280,8 +280,8 @@ public partial class Enemy : CharacterBody3D
 		if (BrokenModel != null)
 		{
 			Node3D brokenModelInstantiate = BrokenModel.Instantiate<Node3D>();
-        	GetParent().AddChild(brokenModelInstantiate);
-        	brokenModelInstantiate.Transform = this.Transform;
+			GetParent().AddChild(brokenModelInstantiate);
+			brokenModelInstantiate.Transform = this.Transform;
 		}
 
 		// Notify LevelManager script
@@ -361,7 +361,7 @@ public partial class Enemy : CharacterBody3D
 		if (currentState == EnemyState.WAITING)
 			return;
 
-	    //targetPlayer.TakeDamage(1);
+		//targetPlayer.TakeDamage(1);
 		currentState = EnemyState.WAITING;
 		waitTimer = WaitTime;
 	}
@@ -409,7 +409,7 @@ public partial class Enemy : CharacterBody3D
 			{
 
 				if (player.CurrentState == Player.PlayerState.DEAD)
-                continue;
+				continue;
 
 				float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 				if (distance < closestDistance)
